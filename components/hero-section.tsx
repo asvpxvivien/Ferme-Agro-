@@ -1,87 +1,58 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { useState, useEffect } from "react"
 import Image from "next/image"
 
 const heroImages = [
-  {
-    url: "/photo de la ferme/Poulailler Vue de Face 1.jpg",
-    title: "Notre Poulailler Familial",
-  },
-  {
-    url: "/photo de la ferme/Legumes 1.jpg",
-    title: "Légumes Frais du Potager",
-  },
-  {
-    url: "/photo de la ferme/Lapin 1.jpg",
-    title: "Élevage de Lapins Naturels",
-  },
-  {
-    url: "/photo de la ferme/Poule 1.jpg",
-    title: "Poulets Élevés en Plein Air",
-  },
-  {
-    url: "/photo de la ferme/Legumes 3.jpg",
-    title: "Production Maraîchère Bio",
-  },
+  "/photo de la ferme/Poulailler Vue de Face 1.jpg",
+  "/photo de la ferme/Legumes 1.jpg",
+  "/photo de la ferme/Lapin 1.jpg",
+  "/photo de la ferme/Poule 1.jpg",
+  "/photo de la ferme/Legumes 3.jpg",
+  "/photo de la ferme/Poulailler Vue de Face 2.jpg",
+  "/photo de la ferme/Legumes 5.jpg",
+  "/photo de la ferme/Lapin 2.jpg",
 ]
 
 export function HeroSection() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length)
-    }, 5000) // Change toutes les 5 secondes
-    return () => clearInterval(timer)
-  }, [])
-
   return (
-    <section className="relative h-[85vh] sm:h-[90vh] lg:h-[95vh] flex items-center justify-center overflow-hidden bg-black">
-      {/* Carousel avec effet de fade */}
+    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Carousel défilant horizontalement */}
       <div className="absolute inset-0 z-0">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentSlide}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={heroImages[currentSlide].url}
-              alt={heroImages[currentSlide].title}
-              fill
-              className="object-cover"
-              priority={currentSlide === 0}
-              quality={90}
-            />
-            {/* Overlay avec dégradé pour meilleure lisibilité */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      {/* Indicateurs de slides */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex gap-2" role="tablist" aria-label="Navigation du carrousel">
-        {heroImages.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`h-1.5 rounded-full transition-all ${
-              index === currentSlide ? "w-12 bg-white shadow-lg" : "w-1.5 bg-white/60 hover:bg-white/80"
-            }`}
-            aria-label={`Aller à l'image ${index + 1} : ${heroImages[index].title}`}
-            aria-current={index === currentSlide ? "true" : "false"}
-            role="tab"
-          />
-        ))}
+        <motion.div
+          className="flex h-full"
+          animate={{
+            x: [0, -3200], // Défile de 3200px (8 images * 400px)
+          }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 30,
+              ease: "linear",
+            },
+          }}
+        >
+          {/* Dupliquer les images pour un défilement infini */}
+          {[...heroImages, ...heroImages].map((image, index) => (
+            <div key={index} className="relative h-full w-[400px] flex-shrink-0">
+              <Image
+                src={image}
+                alt={`Ferme AgroFresh ${index + 1}`}
+                fill
+                className="object-cover"
+                priority={index < 4}
+                quality={90}
+              />
+            </div>
+          ))}
+        </motion.div>
+        {/* Overlay avec dégradé pour meilleure lisibilité */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
       </div>
 
       {/* Contenu */}
@@ -142,7 +113,7 @@ export function HeroSection() {
                 variant="outline"
                 className="text-lg px-8 py-6 bg-white/95 backdrop-blur-sm hover:bg-white border-2 border-white text-gray-900 hover:text-gray-900 shadow-2xl rounded-xl"
               >
-                Notre histoire
+                À propos
               </Button>
             </Link>
           </motion.div>

@@ -1,5 +1,6 @@
 "use client"
 
+import { use } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { products } from "@/lib/products-data"
@@ -11,11 +12,12 @@ import { useCart } from "@/lib/cart-context"
 import { useToast } from "@/hooks/use-toast"
 import Image from "next/image"
 
-export default function ProductPage({ params }: { params: { id: string } }) {
+export default function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { addToCart } = useCart()
   const { toast } = useToast()
-  
-  const product = products.find(p => p.id === params.id)
+
+  const { id } = use(params)
+  const product = products.find(p => p.id === id)
   
   if (!product) {
     notFound()
@@ -60,7 +62,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               <p className="text-muted-foreground mb-8 leading-relaxed">{product.description}</p>
               
               <div className="flex items-baseline gap-3 mb-8">
-                <span className="text-3xl font-bold text-primary">{product.price.toFixed(2)} €</span>
+                <span className="text-3xl font-bold text-primary">{product.price.toLocaleString('fr-FR')} FCFA</span>
                 <span className="text-muted-foreground">/ {product.unit}</span>
               </div>
 

@@ -79,13 +79,12 @@ export function ProductCard({ product, index }: ProductCardProps) {
             </div>
           </CardContent>
           <CardFooter className="p-6 pt-0">
-            <Button 
-              onClick={handleAddToCart} 
-              className="w-full group/btn bg-primary hover:bg-primary/90 transition-all duration-300 hover:scale-[1.02]" 
-              size="lg"
+            <Button
+              onClick={handleAddToCart}
+              className="w-full h-10 group/btn bg-primary hover:bg-primary/90 transition-all duration-300 hover:scale-[1.02] text-sm"
               aria-label={`Ajouter ${product.name} au panier`}
             >
-              <ShoppingCart className="w-5 h-5 mr-2 group-hover/btn:scale-110 transition-transform duration-300" aria-hidden="true" />
+              <ShoppingCart className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform duration-300" aria-hidden="true" />
               Ajouter au panier
             </Button>
           </CardFooter>

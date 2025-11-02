@@ -42,22 +42,22 @@ export function Header() {
 
   return (
     <header
-      className="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8"
+      className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 py-2"
     >
-      <div className="w-full max-w-7xl mx-auto bg-white shadow-lg rounded-2xl border border-gray-100">
-        <div className="flex items-center justify-between h-20 px-6">
-          <Link href="/" className="flex items-center gap-3 group" aria-label="Page d'accueil">
-            <div className="bg-gradient-to-br from-primary to-green-600 rounded-xl p-2.5 group-hover:scale-105 transition-transform shadow-md">
-              <Leaf className="w-6 h-6 text-white" />
+      <div className="w-full max-w-7xl mx-auto bg-gradient-to-r from-amber-50/90 via-yellow-50/90 to-orange-50/90 backdrop-blur-md shadow-lg rounded-2xl border border-amber-200/30">
+        <div className="flex items-center justify-between h-14 px-3">
+          <Link href="/" className="flex items-center gap-2 group" aria-label="Page d'accueil">
+            <div className="bg-gradient-to-br from-primary to-green-600 rounded-xl p-2 group-hover:scale-105 transition-transform shadow-md">
+              <Leaf className="w-5 h-5 text-white" />
             </div>
-            <span className="text-2xl font-bold">
+            <span className="text-xl font-bold">
               <span className="text-gray-800">Agro</span>
               <span className="text-primary">Fresh</span>
             </span>
           </Link>
 
           {/* Navigation Desktop */}
-          <nav className="hidden md:flex items-center gap-8" role="navigation" aria-label="Navigation principale">
+          <nav className="hidden md:flex items-center gap-6" role="navigation" aria-label="Navigation principale">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -71,7 +71,7 @@ export function Header() {
           </nav>
 
           {/* Panier et Menu Mobile */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 ml-auto">
             <Link href="/panier" aria-label={`Voir le panier (${getTotalItems() || 0} articles)`}>
               <Button
                 variant="outline"

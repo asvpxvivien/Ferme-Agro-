@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-background">
       <Header />
-      <div className="pt-28">
+      <div>
         <HeroSection />
         <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <AboutSection />
