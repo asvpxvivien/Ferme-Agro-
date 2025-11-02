@@ -3,17 +3,8 @@ import { Leaf, Mail, Phone, MapPin, Facebook, Instagram, Clock } from "lucide-re
 
 export function Footer() {
   return (
-    <footer className="relative bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 text-gray-800">
-      {/* Effet de vague en haut */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none -translate-y-full">
-        <svg className="relative block w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                fill="#fef3c7" fillOpacity="1"></path>
-          <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-                fill="#fde68a" fillOpacity="1"></path>
-        </svg>
-      </div>
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-32">
+    <footer className="bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 text-gray-800">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Logo et Description */}
           <div className="space-y-4">

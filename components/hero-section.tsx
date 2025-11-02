@@ -102,9 +102,9 @@ export function HeroSection() {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Link href="/catalogue">
-              <Button size="lg" className="text-lg px-8 py-6 group bg-primary hover:bg-primary/90 shadow-2xl rounded-xl">
+              <Button size="lg" className="text-lg px-8 py-6 group bg-primary hover:bg-primary/90 shadow-2xl rounded-xl relative overflow-hidden">
                 Découvrir nos produits
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-all duration-300 animate-bounce" aria-hidden="true" />
               </Button>
             </Link>
             <Link href="/#about">
