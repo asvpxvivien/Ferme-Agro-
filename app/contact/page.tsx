@@ -9,13 +9,16 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
-import { Phone, Mail, MessageCircle, MapPin, Clock, Send, CheckCircle2 } from "lucide-react"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Phone, Mail, MessageCircle, Send, CheckCircle2 } from "lucide-react"
+import { categories } from "@/lib/products-data"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
+    product: "",
     subject: "",
     message: "",
   })
@@ -27,23 +30,17 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Téléphone",
-      value: "+229 XX XX XX XX",
       href: "tel:+229XXXXXXXX",
-      color: "from-primary to-green-600",
     },
     {
       icon: MessageCircle,
       title: "WhatsApp",
-      value: "Discuter maintenant",
       href: "https://wa.me/229XXXXXXXX",
-      color: "from-green-500 to-green-600",
     },
     {
       icon: Mail,
       title: "Email",
-      value: "contact@agrofresh.bj",
-      href: "mailto:contact@agrofresh.bj",
-      color: "from-orange-500 to-red-500",
+      href: "mailto:contact@fermeassiko.bj",
     },
   ]
 
@@ -95,6 +92,7 @@ export default function ContactPage() {
         name: "",
         email: "",
         phone: "",
+        product: "",
         subject: "",
         message: "",
       })
@@ -126,235 +124,194 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              Contactez<span className="text-primary">-nous</span>
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Contactez-<span className="text-primary">nous</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-              Une question sur nos produits ? Besoin d'informations ? Notre équipe est là pour vous répondre.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Une question ? Besoin d'informations ? <br /> Nous sommes là pour vous répondre !
             </p>
           </motion.div>
 
-          {/* Méthodes de contact rapides */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid md:grid-cols-3 gap-6 mb-16"
-          >
-            {contactMethods.map((method, index) => (
-              <motion.a
-                key={method.title}
-                href={method.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 * index }}
-                className="group"
-              >
-                <Card className="h-full hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/50 rounded-2xl overflow-hidden">
-                  <CardContent className="p-8 text-center">
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${method.color} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg`}>
-                      <method.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{method.title}</h3>
-                    <p className="text-gray-600">{method.value}</p>
-                  </CardContent>
-                </Card>
-              </motion.a>
-            ))}
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Formulaire de contact */}
+          {/* Formulaire centré */}
+          <div className="max-w-3xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              <Card className="shadow-2xl rounded-3xl border-2 border-gray-100">
-                <CardContent className="p-8 md:p-10">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">Envoyez-nous un message</h2>
-
-                  {isSuccess && (
+              <Card className="border-2">
+                <CardContent className="p-8">
+                  {isSuccess ? (
                     <motion.div
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="mb-6 p-4 bg-green-50 border-2 border-green-200 rounded-xl flex items-center gap-3"
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      className="text-center py-12"
                     >
-                      <CheckCircle2 className="w-6 h-6 text-green-600" />
-                      <p className="text-green-800 font-medium">Message envoyé avec succès !</p>
+                      <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <CheckCircle2 className="w-12 h-12 text-green-600" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-foreground mb-2">
+                        Message envoyé !
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Nous vous répondrons dans les plus brefs délais.
+                      </p>
                     </motion.div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <div className="grid md:grid-cols-2 gap-6">
+                        {/* Nom */}
+                        <div>
+                          <Label htmlFor="name">Nom complet *</Label>
+                          <Input
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="Votre nom"
+                            className={`h-12 ${errors.name ? "border-red-500" : ""}`}
+                          />
+                          {errors.name && (
+                            <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                          )}
+                        </div>
+
+                        {/* Email */}
+                        <div>
+                          <Label htmlFor="email">Email *</Label>
+                          <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="votre@email.com"
+                            className={`h-12 ${errors.email ? "border-red-500" : ""}`}
+                          />
+                          {errors.email && (
+                            <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-6">
+                        {/* Téléphone */}
+                        <div>
+                          <Label htmlFor="phone">Téléphone *</Label>
+                          <Input
+                            id="phone"
+                            name="phone"
+                            type="tel"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            placeholder="+229 XX XX XX XX"
+                            className={`h-12 ${errors.phone ? "border-red-500" : ""}`}
+                          />
+                          {errors.phone && (
+                            <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                          )}
+                        </div>
+
+                        {/* Produit */}
+                        <div>
+                          <Label htmlFor="product">Produit concerné</Label>
+                          <Select
+                            value={formData.product}
+                            onValueChange={(value) =>
+                              setFormData((prev) => ({ ...prev, product: value }))
+                            }
+                          >
+                            <SelectTrigger className="h-12">
+                              <SelectValue placeholder="Sélectionner un produit" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {categories.filter(cat => cat !== "Tous").map((category) => (
+                                <SelectItem key={category} value={category}>
+                                  {category}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      </div>
+
+                      {/* Sujet */}
+                      <div>
+                        <Label htmlFor="subject">Sujet *</Label>
+                        <Input
+                          id="subject"
+                          name="subject"
+                          value={formData.subject}
+                          onChange={handleChange}
+                          placeholder="L'objet de votre message"
+                          className={`h-12 ${errors.subject ? "border-red-500" : ""}`}
+                        />
+                        {errors.subject && (
+                          <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
+                        )}
+                      </div>
+
+                      {/* Message */}
+                      <div>
+                        <Label htmlFor="message">Message *</Label>
+                        <Textarea
+                          id="message"
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
+                          placeholder="Votre message..."
+                          rows={10}
+                          className={errors.message ? "border-red-500" : ""}
+                        />
+                        {errors.message && (
+                          <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                        )}
+                      </div>
+
+                      {/* Bouton Submit */}
+                      <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full h-14 text-lg font-semibold bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 rounded-xl shadow-lg"
+                      >
+                        {isSubmitting ? (
+                          "Envoi en cours..."
+                        ) : (
+                          <>
+                            <Send className="w-5 h-5 mr-2" />
+                            Envoyer le message
+                          </>
+                        )}
+                      </Button>
+                    </form>
                   )}
-
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                      <Label htmlFor="name" className="text-base font-semibold text-gray-700">Nom complet *</Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Votre nom"
-                        className={`mt-2 h-12 rounded-xl border-2 ${errors.name ? "border-red-300" : "border-gray-200"} focus:border-primary`}
-                      />
-                      {errors.name && (
-                        <p className="text-sm text-red-500 mt-1">{errors.name}</p>
-                      )}
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <div>
-                        <Label htmlFor="email" className="text-base font-semibold text-gray-700">Email *</Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          placeholder="votre@email.com"
-                          className={`mt-2 h-12 rounded-xl border-2 ${errors.email ? "border-red-300" : "border-gray-200"} focus:border-primary`}
-                        />
-                        {errors.email && (
-                          <p className="text-sm text-red-500 mt-1">{errors.email}</p>
-                        )}
-                      </div>
-
-                      <div>
-                        <Label htmlFor="phone" className="text-base font-semibold text-gray-700">Téléphone *</Label>
-                        <Input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          placeholder="+229 XX XX XX XX"
-                          className={`mt-2 h-12 rounded-xl border-2 ${errors.phone ? "border-red-300" : "border-gray-200"} focus:border-primary`}
-                        />
-                        {errors.phone && (
-                          <p className="text-sm text-red-500 mt-1">{errors.phone}</p>
-                        )}
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="subject" className="text-base font-semibold text-gray-700">Sujet *</Label>
-                      <Input
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        placeholder="Objet de votre message"
-                        className={`mt-2 h-12 rounded-xl border-2 ${errors.subject ? "border-red-300" : "border-gray-200"} focus:border-primary`}
-                      />
-                      {errors.subject && (
-                        <p className="text-sm text-red-500 mt-1">{errors.subject}</p>
-                      )}
-                    </div>
-
-                    <div>
-                      <Label htmlFor="message" className="text-base font-semibold text-gray-700">Message *</Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        placeholder="Votre message..."
-                        rows={6}
-                        className={`mt-2 rounded-xl border-2 ${errors.message ? "border-red-300" : "border-gray-200"} focus:border-primary resize-none`}
-                      />
-                      {errors.message && (
-                        <p className="text-sm text-red-500 mt-1">{errors.message}</p>
-                      )}
-                    </div>
-
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full h-14 text-lg font-semibold bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 rounded-xl shadow-lg"
-                    >
-                      {isSubmitting ? (
-                        "Envoi en cours..."
-                      ) : (
-                        <>
-                          <Send className="w-5 h-5 mr-2" />
-                          Envoyer le message
-                        </>
-                      )}
-                    </Button>
-                  </form>
                 </CardContent>
               </Card>
             </motion.div>
 
-            {/* Informations */}
+            {/* Icônes de contact en bas */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="space-y-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-12 flex justify-center gap-8"
             >
-              <Card className="shadow-lg rounded-3xl border-2 border-gray-100">
-                <CardContent className="p-8">
-                  <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-green-600 flex items-center justify-center flex-shrink-0 shadow-lg">
-                      <MapPin className="w-7 h-7 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">Notre adresse</h3>
-                      <p className="text-gray-600 text-lg leading-relaxed">
-                        Ferme Familiale AgroFresh
-                        <br />
-                        Cotonou, Bénin
-                      </p>
-                    </div>
+              {contactMethods.map((method, index) => (
+                <a
+                  key={index}
+                  href={method.href}
+                  target={method.title === "WhatsApp" ? "_blank" : undefined}
+                  rel={method.title === "WhatsApp" ? "noopener noreferrer" : undefined}
+                  className="flex flex-col items-center gap-2 group"
+                >
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-green-600 flex items-center justify-center transition-transform group-hover:scale-110 shadow-lg">
+                    <method.icon className="w-8 h-8 text-white" />
                   </div>
-                </CardContent>
-              </Card>
-
-              <Card className="shadow-lg rounded-3xl border-2 border-gray-100">
-                <CardContent className="p-8">
-                  <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center flex-shrink-0 shadow-lg">
-                      <Clock className="w-7 h-7 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">Horaires d'ouverture</h3>
-                      <p className="text-gray-600 text-lg leading-relaxed">
-                        Lundi - Samedi : 8h - 19h
-                        <br />
-                        Dimanche : 9h - 13h
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="shadow-lg rounded-3xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-green-50">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Pourquoi nous choisir ?</h3>
-                  <ul className="space-y-3 text-gray-700">
-                    <li className="flex items-start gap-3">
-                      <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-                      <span>Produits 100% frais et naturels</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-                      <span>Livraison rapide à domicile</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-                      <span>Service client réactif et à l'écoute</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-                      <span>Prix compétitifs et transparents</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+                  <p className="font-semibold text-foreground text-sm">{method.title}</p>
+                </a>
+              ))}
             </motion.div>
           </div>
         </div>

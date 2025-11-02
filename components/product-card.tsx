@@ -26,22 +26,21 @@ export function ProductCard({ product, index }: ProductCardProps) {
     setIsModalOpen(true)
   }
 
-  const handleConfirmAdd = () => {
-    addToCart(product)
+  const handleConfirmAdd = (quantity: number, purchaseType: "detail" | "gros") => {
+    addToCart(product, quantity, purchaseType)
     setIsModalOpen(false)
     toast({
       title: "Produit ajouté !",
-      description: `${product.name} a été ajouté à votre panier.`,
+      description: `${quantity} x ${product.name} ajouté${quantity > 1 ? 's' : ''} à votre panier${purchaseType === "gros" ? " (en gros)" : ""}.`,
     })
   }
 
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.3), ease: "easeOut" }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2, delay: Math.min(index * 0.02, 0.1), ease: "easeOut" }}
       >
         <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col border-2 hover:border-primary/50">
           <div className="relative flex-1 min-h-[280px] overflow-hidden bg-secondary/10">
@@ -50,9 +49,10 @@ export function ProductCard({ product, index }: ProductCardProps) {
               alt={product.name}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              loading={index < 4 ? "eager" : "lazy"}
-              quality={85}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              loading={index < 6 ? "eager" : "lazy"}
+              quality={75}
+              priority={index < 4}
             />
             <div className="absolute top-4 right-4 bg-accent text-accent-foreground px-3 py-1.5 rounded-full text-sm font-semibold shadow-lg">
               {product.category}

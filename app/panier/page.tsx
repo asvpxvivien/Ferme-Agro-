@@ -24,8 +24,8 @@ export default function PanierPage() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
-      <main className="flex-1 pt-20">
-        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 pt-20 pb-8">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
             Votre <span className="text-primary">Panier</span>
           </h1>
@@ -66,8 +66,8 @@ export default function PanierPage() {
                   
                   <div className="divide-y divide-border">
                     {cart.map((item) => (
-                      <div key={item.id} className="p-6 flex flex-col sm:flex-row gap-6">
-                        <div className="relative w-full sm:w-24 h-24 rounded-lg overflow-hidden bg-secondary/10 flex-shrink-0">
+                      <div key={item.id} className="p-4 flex flex-col sm:flex-row gap-4">
+                        <div className="relative w-full sm:w-20 h-20 rounded-lg overflow-hidden bg-secondary/10 flex-shrink-0">
                           <img
                             src={item.image || "/placeholder.svg"}
                             alt={item.name}
@@ -130,9 +130,9 @@ export default function PanierPage() {
               </div>
               
               <div>
-                <div className="bg-background rounded-xl border border-border shadow-sm p-6 sticky top-24">
+                <div className="bg-background rounded-xl border border-border shadow-sm p-6 lg:sticky lg:top-24 lg:self-start mb-8">
                   <h2 className="text-xl font-bold text-foreground mb-6">Récapitulatif</h2>
-                  
+
                   <div className="space-y-4 mb-6">
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Sous-total</span>
@@ -148,24 +148,24 @@ export default function PanierPage() {
                     </div>
                   </div>
 
-                  <Link href="/commander">
+                  <Link href="/checkout">
                     <Button className="w-full bg-primary hover:bg-primary/90 mb-4">
                       Passer la commande
                     </Button>
                   </Link>
-                  
+
                   <Link href="/catalogue">
                     <Button variant="outline" className="w-full">
                       Continuer les achats
                     </Button>
                   </Link>
                 </div>
-                
+
                 {recommendedProducts.length > 0 && (
-                  <div className="mt-8">
-                    <h3 className="font-bold text-foreground mb-4">Vous aimerez aussi</h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {recommendedProducts.map((product, index) => (
+                  <div className="relative">
+                    <h3 className="font-bold text-foreground mb-4 text-center">Vous aimerez aussi</h3>
+                    <div className="grid grid-cols-1 gap-4">
+                      {recommendedProducts.slice(0, 2).map((product, index) => (
                         <ProductCard key={product.id} product={product} index={index} />
                       ))}
                     </div>

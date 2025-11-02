@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { ShoppingCart, Menu, X } from "lucide-react"
+import { ShoppingCart, Menu, X, Leaf } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useCart } from "@/lib/cart-context"
 import { motion, AnimatePresence } from "framer-motion"
@@ -31,15 +31,17 @@ export function Header() {
   ]
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 md:pt-4">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 backdrop-blur-md shadow-lg rounded-full border border-amber-200/50">
-          <div className="flex items-center justify-between px-6 h-16">
+        <div className="bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 backdrop-blur-md shadow-lg rounded-full md:rounded-full rounded-2xl border border-amber-200/50">
+          <div className="flex items-center justify-between px-4 md:px-6 h-14 md:h-16">
             {/* Logo */}
-            <Link href="/" className="group">
-              <span className="text-lg font-bold tracking-tight group-hover:scale-105 transition-transform inline-block">
-                <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">Agro</span>
-                <span className="text-gray-800">Fresh</span>
+            <Link href="/" className="group flex items-center gap-2">
+              <div className="bg-gradient-to-br from-primary to-green-600 rounded-lg p-1.5 shadow-sm">
+                <Leaf className="w-4 h-4 text-white" />
+              </div>
+              <span className="text-base font-bold tracking-tight group-hover:scale-105 transition-transform inline-block">
+                <span className="text-gray-800">ASS</span><span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">IKO</span>
               </span>
             </Link>
 
@@ -49,7 +51,7 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-base text-gray-700 hover:text-green-600 hover:scale-110 transition-all duration-200"
+                  className="text-base text-gray-700 hover:text-green-600 hover:scale-110 active:scale-95 transition-all duration-200"
                 >
                   {link.label}
                 </Link>
@@ -95,15 +97,15 @@ export function Header() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="md:hidden border-t border-gray-200/50 overflow-hidden"
+                className="md:hidden border-t border-amber-200/30 overflow-hidden"
               >
-                <nav className="px-6 py-4 flex flex-col gap-2">
+                <nav className="px-4 py-3 flex flex-col gap-1">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-sm text-gray-700 hover:text-green-600 transition-colors font-medium py-2"
+                      className="text-sm text-gray-700 hover:text-green-600 hover:bg-amber-100/50 transition-all font-medium py-2.5 px-3 rounded-lg"
                     >
                       {link.label}
                     </Link>

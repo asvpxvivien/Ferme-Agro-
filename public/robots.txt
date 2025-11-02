@@ -1,0 +1,5 @@
+# Ferme AgroEcologique ASSIKO
+User-agent: *
+Allow: /
+
+Sitemap: https://fermeassiko.bj/sitemap.xml

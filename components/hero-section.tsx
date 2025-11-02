@@ -41,7 +41,7 @@ export function HeroSection() {
             <div key={index} className="relative h-full w-[400px] flex-shrink-0">
               <Image
                 src={image}
-                alt={`Ferme AgroFresh ${index + 1}`}
+                alt={`Ferme ASSIKO ${index + 1}`}
                 fill
                 className="object-cover"
                 priority={index < 4}
@@ -68,14 +68,14 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
             style={{
               textShadow: "0 0 30px rgba(0,0,0,0.9), 0 4px 15px rgba(0,0,0,0.8), 0 2px 6px rgba(0,0,0,0.6)"
             }}
           >
-            Bienvenue chez <span className="text-primary">AgroFresh</span>
+            Bienvenue à la <span className="text-primary">Ferme ASSIKO</span>
             <br />
-            <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-secondary">Du Champ à Votre Table</span>
+            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-secondary">Agriculture Écologique & Naturelle</span>
           </motion.h1>
 
           {/* Description */}
@@ -92,7 +92,7 @@ export function HeroSection() {
                 damping: 10
               }
             }}
-            className="text-lg sm:text-xl md:text-2xl text-white mb-10 leading-relaxed max-w-3xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-white mb-10 leading-relaxed max-w-3xl mx-auto"
             style={{
               textShadow: "0 0 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.6)"
             }}

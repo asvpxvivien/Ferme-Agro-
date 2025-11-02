@@ -5,15 +5,23 @@ import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { CartProvider } from "@/lib/cart-context"
+import { CheckoutProvider } from "@/lib/checkout-context"
 import { Toaster } from "@/components/ui/toaster"
 import { Suspense } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
-  title: "AgroFresh - Produits Frais de la Ferme",
+  title: "Ferme AgroEcologique ASSIKO - Produits Bio & Naturels | Bénin",
   description:
-    "Découvrez AgroFresh, votre ferme familiale proposant des produits frais et naturels : poulets, œufs, lapins, légumes et fruits cultivés avec passion.",
-  generator: "v0.app",
+    "Ferme AgroEcologique ASSIKO à Calavi, Bénin. Produits biologiques 100% naturels : poulets fermiers, œufs frais, lapins, légumes bio. Agriculture écologique et locale. Livraison disponible.",
+  keywords: "ferme bio Bénin, produits naturels Calavi, poulet fermier, œufs bio, légumes biologiques, agriculture écologique, produits frais Bénin, ferme Assiko",
+  authors: [{ name: "Ferme AgroEcologique ASSIKO" }],
+  openGraph: {
+    title: "Ferme AgroEcologique ASSIKO - Produits Bio & Naturels",
+    description: "Découvrez nos produits biologiques 100% naturels : poulets fermiers, œufs frais, légumes bio cultivés à Calavi, Bénin",
+    type: "website",
+    locale: "fr_BJ",
+  },
 }
 
 export default function RootLayout({
@@ -32,8 +40,10 @@ export default function RootLayout({
         >
           <Suspense fallback={null}>
             <CartProvider>
-              {children}
-              <Toaster />
+              <CheckoutProvider>
+                {children}
+                <Toaster />
+              </CheckoutProvider>
             </CartProvider>
           </Suspense>
           <Analytics />

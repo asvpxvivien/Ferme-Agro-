@@ -15,11 +15,13 @@ export interface Product {
 
 export interface CartItem extends Product {
   quantity: number
+  purchaseType?: "detail" | "gros"
 }
 
 interface CartContextType {
   cart: CartItem[]
-  addToCart: (product: Product) => void
+  items: CartItem[] // Alias pour compatibilité
+  addToCart: (product: Product, quantity?: number, purchaseType?: "detail" | "gros") => void
   removeFromCart: (productId: string) => void
   updateQuantity: (productId: string, quantity: number) => void
   clearCart: () => void
@@ -45,13 +47,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("farm-cart", JSON.stringify(cart))
   }, [cart])
 
-  const addToCart = (product: Product) => {
+  const addToCart = (product: Product, quantity: number = 1, purchaseType: "detail" | "gros" = "detail") => {
     setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === product.id)
+      const existingItem = prevCart.find((item) => item.id === product.id && item.purchaseType === purchaseType)
       if (existingItem) {
-        return prevCart.map((item) => (item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item))
+        return prevCart.map((item) =>
+          (item.id === product.id && item.purchaseType === purchaseType)
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        )
       }
-      return [...prevCart, { ...product, quantity: 1 }]
+      return [...prevCart, { ...product, quantity, purchaseType }]
     })
   }
 
@@ -83,6 +89,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     <CartContext.Provider
       value={{
         cart,
+        items: cart, // Alias pour compatibilité
         addToCart,
         removeFromCart,
         updateQuantity,
