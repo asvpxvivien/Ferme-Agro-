@@ -122,9 +122,9 @@ export default function CommanderPage() {
 
   if (cart.length === 0 && !orderSuccess) {
     return (
-      <div className="min-h-screen flex flex-col bg-gradient-to-b from-background to-secondary/10">
+      <div className="min-h-screen flex flex-col bg-white">
         <Header />
-        <main className="flex-1 pt-16">
+        <main className="flex-1 pt-20">
           <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div className="text-center">
               <ShoppingCart className="w-16 h-16 text-muted-foreground mx-auto mb-6" />
@@ -147,9 +147,9 @@ export default function CommanderPage() {
 
   if (orderSuccess) {
     return (
-      <div className="min-h-screen flex flex-col bg-gradient-to-b from-background to-secondary/10">
+      <div className="min-h-screen flex flex-col bg-white">
         <Header />
-        <main className="flex-1 pt-16">
+        <main className="flex-1 pt-20">
           <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -181,9 +181,9 @@ export default function CommanderPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-green-50/30 to-white">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header />
-      <main className="flex-1 pt-32 pb-16">
+      <main className="flex-1 pt-24 pb-16">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}

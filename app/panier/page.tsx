@@ -22,9 +22,9 @@ export default function PanierPage() {
     .slice(0, 4)
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-background to-secondary/10">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header />
-      <main className="flex-1 pt-16">
+      <main className="flex-1 pt-20">
         <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
             Votre <span className="text-primary">Panier</span>

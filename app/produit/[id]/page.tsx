@@ -32,18 +32,18 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-background to-secondary/10">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header />
-      <main className="flex-1 pt-16">
-        <div className="container mx-auto px-6 py-8">
+      <main className="flex-1 pt-20">
+        <div className="max-w-6xl mx-auto px-6 py-8">
           <Link href="/catalogue" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-8">
             <ArrowLeft className="w-4 h-4" />
             Retour au catalogue
           </Link>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-8">
             {/* Image du produit */}
-            <div className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden bg-secondary/10">
+            <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden bg-secondary/10">
               <Image
                 src={product.image || "/placeholder.svg"}
                 alt={product.name}
@@ -54,28 +54,28 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
             </div>
 
             {/* Informations du produit */}
-            <div>
-              <div className="bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full inline-block mb-4">
+            <div className="bg-gradient-to-b from-background to-secondary/10 p-6 rounded-2xl">
+              <div className="bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full inline-block mb-3">
                 {product.category}
               </div>
-              <h1 className="text-3xl font-bold text-foreground mb-4">{product.name}</h1>
-              <p className="text-muted-foreground mb-8 leading-relaxed">{product.description}</p>
-              
-              <div className="flex items-baseline gap-3 mb-8">
-                <span className="text-3xl font-bold text-primary">{product.price.toLocaleString('fr-FR')} FCFA</span>
-                <span className="text-muted-foreground">/ {product.unit}</span>
+              <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-3">{product.name}</h1>
+              <p className="text-muted-foreground mb-6 leading-relaxed text-sm">{product.description}</p>
+
+              <div className="flex items-baseline gap-3 mb-6">
+                <span className="text-2xl md:text-3xl font-bold text-primary">{product.price.toLocaleString('fr-FR')} FCFA</span>
+                <span className="text-muted-foreground text-sm">/ {product.unit}</span>
               </div>
 
-              <div className="flex flex-wrap gap-4">
-                <Button 
+              <div className="flex flex-wrap gap-3">
+                <Button
                   onClick={handleAddToCart}
-                  size="lg"
+                  size="default"
                   className="group bg-primary hover:bg-primary/90"
                 >
-                  <ShoppingCart className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                  <ShoppingCart className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
                   Ajouter au panier
                 </Button>
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="default">
                   Commander maintenant
                 </Button>
               </div>

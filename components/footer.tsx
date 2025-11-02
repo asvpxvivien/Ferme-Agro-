@@ -126,16 +126,8 @@ export function Footer() {
         </div>
 
         <div className="border-t border-amber-200 mt-10 pt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-600 text-sm">
+          <div className="text-center text-gray-600 text-sm">
             <p>© 2025 AgroFresh. Tous droits réservés.</p>
-            <div className="flex gap-6">
-              <Link href="#" className="hover:text-primary transition-colors">
-                Mentions légales
-              </Link>
-              <Link href="#" className="hover:text-primary transition-colors">
-                Politique de confidentialité
-              </Link>
-            </div>
           </div>
         </div>
       </div>

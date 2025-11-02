@@ -66,7 +66,7 @@ export function AddToCartModal({ isOpen, onClose, onConfirm, product }: AddToCar
                   <h4 className="font-semibold text-foreground mb-2">{product.name}</h4>
                   <p className="text-sm text-muted-foreground mb-3">{product.description}</p>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-2xl font-bold text-primary">{product.price.toFixed(2)} €</span>
+                    <span className="text-2xl font-bold text-primary">{product.price.toLocaleString('fr-FR')} FCFA</span>
                     <span className="text-muted-foreground text-sm">/ {product.unit}</span>
                   </div>
                 </div>
