@@ -23,9 +23,9 @@ export function ContactSection() {
             Une question sur nos produits ? Besoin d'informations ?<br />Notre équipe est là pour vous répondre !
           </p>
           <Link href="/contact">
-            <Button size="lg" className="bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 shadow-2xl rounded-xl text-lg px-10 py-7 group relative overflow-hidden">
+            <Button size="lg" className="bg-gradient-to-r from-primary to-green-600 hover:from-primary/90 hover:to-green-600/90 shadow-2xl rounded-xl text-xl px-10 py-7 group relative overflow-hidden">
               Accéder au formulaire de contact
-              <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-all duration-300 animate-pulse" />
+              <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-all duration-300 animate-bounce" />
             </Button>
           </Link>
         </motion.div>

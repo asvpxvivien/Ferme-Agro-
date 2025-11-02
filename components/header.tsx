@@ -24,6 +24,8 @@ export function Header() {
 
   const navLinks = [
     { href: "/", label: "Accueil" },
+    { href: "/#about", label: "Notre Ferme" },
+    { href: "/#products", label: "Nos Produits" },
     { href: "/catalogue", label: "Catalogue" },
     { href: "/contact", label: "Contact" },
   ]
@@ -31,8 +33,8 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white/90 backdrop-blur-md shadow-lg rounded-full border border-gray-200/50">
-          <div className="flex items-center justify-between px-6 h-14">
+        <div className="bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 backdrop-blur-md shadow-lg rounded-full border border-amber-200/50">
+          <div className="flex items-center justify-between px-6 h-16">
             {/* Logo */}
             <Link href="/" className="group">
               <span className="text-lg font-bold tracking-tight group-hover:scale-105 transition-transform inline-block">
@@ -47,7 +49,7 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-gray-700 font-medium hover:text-green-600 hover:scale-110 transition-all duration-200"
+                  className="text-base text-gray-700 hover:text-green-600 hover:scale-110 transition-all duration-200"
                 >
                   {link.label}
                 </Link>

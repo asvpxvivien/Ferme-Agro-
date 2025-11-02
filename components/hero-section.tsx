@@ -7,14 +7,14 @@ import Link from "next/link"
 import Image from "next/image"
 
 const heroImages = [
-  "/photo de la ferme/Poulailler Vue de Face 1.jpg",
-  "/photo de la ferme/Legumes 1.jpg",
-  "/photo de la ferme/Lapin 1.jpg",
-  "/photo de la ferme/Poule 1.jpg",
-  "/photo de la ferme/Legumes 3.jpg",
-  "/photo de la ferme/Poulailler Vue de Face 2.jpg",
-  "/photo de la ferme/Legumes 5.jpg",
-  "/photo de la ferme/Lapin 2.jpg",
+  "/Photo de la ferme/Poulailler Vue de Face 1.jpg",
+  "/Photo de la ferme/Legumes 1.jpg",
+  "/Photo de la ferme/Lapin 1.jpg",
+  "/Photo de la ferme/Poule 1.jpg",
+  "/Photo de la ferme/Legumes 3.jpg",
+  "/Photo de la ferme/Poulailler Vue de Face 2.jpg",
+  "/Photo de la ferme/Legumes 5.jpg",
+  "/Photo de la ferme/Lapin 2.jpg",
 ]
 
 export function HeroSection() {
@@ -70,8 +70,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
             style={{
-              textShadow:
-                "0 0 30px rgba(0,0,0,0.9), 0 4px 15px rgba(0,0,0,0.8), 0 2px 6px rgba(0,0,0,0.6)",
+              textShadow: "0 0 30px rgba(0,0,0,0.9), 0 4px 15px rgba(0,0,0,0.8), 0 2px 6px rgba(0,0,0,0.6)"
             }}
           >
             Bienvenue chez <span className="text-primary">AgroFresh</span>
@@ -81,13 +80,21 @@ export function HeroSection() {
 
           {/* Description */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 1.2,
+              delay: 0.4,
+              ease: "easeOut",
+              scale: {
+                type: "spring",
+                stiffness: 100,
+                damping: 10
+              }
+            }}
             className="text-lg sm:text-xl md:text-2xl text-white mb-10 leading-relaxed max-w-3xl mx-auto"
             style={{
-              textShadow:
-                "0 0 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.6)",
+              textShadow: "0 0 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.6)"
             }}
           >
             Découvrez nos produits frais et authentiques, cultivés avec passion et respect de la nature.
@@ -99,21 +106,12 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex justify-center"
           >
             <Link href="/catalogue">
               <Button size="lg" className="text-lg px-8 py-6 group bg-primary hover:bg-primary/90 shadow-2xl rounded-xl relative overflow-hidden">
                 Découvrir nos produits
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-all duration-300 animate-bounce" aria-hidden="true" />
-              </Button>
-            </Link>
-            <Link href="/#about">
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 py-6 bg-white/95 backdrop-blur-sm hover:bg-white border-2 border-white text-gray-900 hover:text-gray-900 shadow-2xl rounded-xl"
-              >
-                À propos
               </Button>
             </Link>
           </motion.div>

@@ -44,7 +44,7 @@ export function ProductCard({ product, index }: ProductCardProps) {
         transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.3), ease: "easeOut" }}
       >
         <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col border-2 hover:border-primary/50">
-          <div className="relative h-48 sm:h-56 lg:h-64 overflow-hidden bg-secondary/10">
+          <div className="relative flex-1 min-h-[280px] overflow-hidden bg-secondary/10">
             <Image
               src={product.image || "/placeholder.svg"}
               alt={product.name}
@@ -66,7 +66,7 @@ export function ProductCard({ product, index }: ProductCardProps) {
               </div>
             </Link>
           </div>
-          <CardContent className="flex-1 p-6">
+          <CardContent className="p-6">
             <Link href={`/produit/${product.id}`} aria-label={`Voir les détails du produit ${product.name}`}>
               <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors cursor-pointer">
                 {product.name}

@@ -7,7 +7,7 @@ export const products: Product[] = [
     category: "Volailles",
     price: 8000, // FCFA
     unit: "kg",
-    image: "/photo de la ferme/Poule 1.jpg",
+    image: "/Photo de la ferme/Poule 1.jpg",
     description: "Poulet élevé en plein air, nourri aux grains naturels, sans antibiotiques",
   },
   {
@@ -16,7 +16,7 @@ export const products: Product[] = [
     category: "Œufs",
     price: 3000, // FCFA
     unit: "boîte de 6",
-    image: "/photo de la ferme/Poule 2.jpg",
+    image: "/Photo de la ferme/oeufs.jpg",
     description: "Œufs de poules élevées en liberté, ramassés quotidiennement",
   },
   {
@@ -25,7 +25,7 @@ export const products: Product[] = [
     category: "Volailles",
     price: 10000, // FCFA
     unit: "kg",
-    image: "/photo de la ferme/Lapin 1.jpg",
+    image: "/Photo de la ferme/Lapin 1.jpg",
     description: "Lapin fermier élevé naturellement, viande tendre et savoureuse",
   },
   {
@@ -34,7 +34,7 @@ export const products: Product[] = [
     category: "Légumes",
     price: 1500, // FCFA
     unit: "pièce",
-    image: "/photo de la ferme/Legumes 1.jpg",
+    image: "/Photo de la ferme/Legumes 1.jpg",
     description: "Salade fraîche du jour, cultivée sans pesticides",
   },
   {
@@ -43,7 +43,7 @@ export const products: Product[] = [
     category: "Légumes",
     price: 3000, // FCFA
     unit: "kg",
-    image: "/photo de la ferme/Legumes 2.jpg",
+    image: "/Photo de la ferme/Legumes 2.jpg",
     description: "Variétés anciennes de tomates, goût authentique",
   },
   {
@@ -52,7 +52,7 @@ export const products: Product[] = [
     category: "Légumes",
     price: 2500, // FCFA
     unit: "kg",
-    image: "/photo de la ferme/Legumes 3.jpg",
+    image: "/Photo de la ferme/Legumes 3.jpg",
     description: "Mélange de légumes frais, cultivés naturellement",
   },
   {
@@ -61,7 +61,7 @@ export const products: Product[] = [
     category: "Légumes",
     price: 2000, // FCFA
     unit: "kg",
-    image: "/photo de la ferme/Legumes 4.jpg",
+    image: "/Photo de la ferme/Legumes 4.jpg",
     description: "Carottes fraîches et sucrées, cultivées naturellement",
   },
   {
@@ -70,7 +70,7 @@ export const products: Product[] = [
     category: "Légumes",
     price: 1800, // FCFA
     unit: "kg",
-    image: "/photo de la ferme/Legumes 5.jpg",
+    image: "/Photo de la ferme/Legumes 5.jpg",
     description: "Légumes verts frais du jardin, récoltés le matin",
   },
   {
@@ -79,7 +79,7 @@ export const products: Product[] = [
     category: "Légumes",
     price: 1800, // FCFA
     unit: "kg",
-    image: "/photo de la ferme/Legumes 6.jpg",
+    image: "/Photo de la ferme/Legumes 6.jpg",
     description: "Courgettes tendres et savoureuses du potager",
   },
   {
@@ -88,7 +88,7 @@ export const products: Product[] = [
     category: "Volailles",
     price: 12000, // FCFA
     unit: "ensemble",
-    image: "/photo de la ferme/Lapin & bébé 1.jpg",
+    image: "/Photo de la ferme/Lapin & bébé 1.jpg",
     description: "Lapin fermier avec petits, élevage naturel",
   },
   {
@@ -97,7 +97,7 @@ export const products: Product[] = [
     category: "Volailles",
     price: 10500, // FCFA
     unit: "kg",
-    image: "/photo de la ferme/Lapin 2.jpg",
+    image: "/Photo de la ferme/Lapin 2.jpg",
     description: "Lapin de qualité supérieure, viande tendre",
   },
   {
@@ -106,7 +106,7 @@ export const products: Product[] = [
     category: "Volailles",
     price: 8500, // FCFA
     unit: "kg",
-    image: "/photo de la ferme/Poule 3.jpg",
+    image: "/Photo de la ferme/Poule 3.jpg",
     description: "Poulet fermier de haute qualité, élevé avec soin",
   },
 ]

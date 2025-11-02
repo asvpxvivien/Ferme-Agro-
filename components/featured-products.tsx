@@ -42,9 +42,9 @@ export function FeaturedProducts() {
           className="text-center"
         >
           <Link href="/catalogue">
-            <Button size="lg" className="group bg-primary hover:bg-primary/90">
+            <Button size="lg" className="group bg-primary hover:bg-primary/90 text-xl px-10 py-7">
               Voir tout le catalogue
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-all duration-300 animate-bounce" />
             </Button>
           </Link>
         </motion.div>

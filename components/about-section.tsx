@@ -31,6 +31,21 @@ export function AboutSection() {
   return (
     <section id="about" className="py-16">
       <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Notre Ferme <span className="text-primary">Authentique</span>
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Découvrez notre exploitation familiale où tradition et qualité se rencontrent pour vous offrir le meilleur de la nature.
+          </p>
+        </motion.div>
+
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Images */}
           <motion.div
@@ -43,40 +58,40 @@ export function AboutSection() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="relative h-64 rounded-2xl overflow-hidden">
-                  <Image 
-                    src="/farmer-with-vegetables.jpg" 
-                    alt="Fermier" 
-                    fill 
-                    className="object-cover" 
+                  <Image
+                    src="/Photo de la ferme/Poule 1.jpg"
+                    alt="Poulet"
+                    fill
+                    className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
                 <div className="relative h-48 rounded-2xl overflow-hidden">
-                  <Image 
-                    src="/fresh-farm-eggs.png" 
-                    alt="Œufs frais" 
-                    fill 
-                    className="object-cover" 
+                  <Image
+                    src="/Photo de la ferme/oeufs.jpg"
+                    alt="Œufs frais"
+                    fill
+                    className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
               </div>
               <div className="space-y-4 pt-8">
                 <div className="relative h-48 rounded-2xl overflow-hidden">
-                  <Image 
-                    src="/organic-vegetables-garden.jpg" 
-                    alt="Potager" 
-                    fill 
-                    className="object-cover" 
+                  <Image
+                    src="/Photo de la ferme/Legumes 1.jpg"
+                    alt="Légumes"
+                    fill
+                    className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
                 <div className="relative h-64 rounded-2xl overflow-hidden">
-                  <Image 
-                    src="/free-range-chickens.png" 
-                    alt="Poules" 
-                    fill 
-                    className="object-cover" 
+                  <Image
+                    src="/Photo de la ferme/Poulailler Vue de Face 1.jpg"
+                    alt="Poulailler"
+                    fill
+                    className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
@@ -86,10 +101,10 @@ export function AboutSection() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-              className="absolute -bottom-6 -right-6 bg-accent text-accent-foreground rounded-2xl p-6 shadow-xl"
+              className="absolute -bottom-6 -right-6 bg-green-600 text-white rounded-2xl p-6 shadow-xl"
             >
-              <div className="text-4xl font-bold">25+</div>
-              <div className="text-sm font-semibold">Ans d'expérience</div>
+              <div className="text-4xl font-bold">100%</div>
+              <div className="text-sm font-semibold">Bio</div>
             </motion.div>
           </motion.div>
 
@@ -101,9 +116,9 @@ export function AboutSection() {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Une Ferme Familiale
+              Agriculture Naturelle
               <br />
-              <span className="text-primary">Depuis 1998</span>
+              <span className="text-primary">& Locale</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Nichée au cœur de la campagne, notre ferme familiale perpétue une tradition agricole authentique. Nous
