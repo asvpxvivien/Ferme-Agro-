@@ -24,20 +24,18 @@ export function Header() {
 
   const navLinks = [
     { href: "/", label: "Accueil" },
-    { href: "/#about", label: "Notre Ferme" },
-    { href: "/#products", label: "Nos Produits" },
     { href: "/catalogue", label: "Catalogue" },
     { href: "/contact", label: "Contact" },
   ]
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="w-full max-w-[1400px] mx-auto px-6 py-4">
-        <div className="bg-white/80 backdrop-blur-xl shadow-xl rounded-2xl border border-gray-100/50">
-          <div className="flex items-center justify-between px-6 py-3">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+      <div className="max-w-4xl mx-auto">
+        <div className="bg-white/90 backdrop-blur-md shadow-lg rounded-full border border-gray-200/50">
+          <div className="flex items-center justify-between px-6 h-14">
             {/* Logo */}
             <Link href="/" className="group">
-              <span className="text-2xl font-bold tracking-tight group-hover:scale-105 transition-transform inline-block">
+              <span className="text-lg font-bold tracking-tight group-hover:scale-105 transition-transform inline-block">
                 <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">Agro</span>
                 <span className="text-gray-800">Fresh</span>
               </span>
@@ -49,7 +47,7 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-gray-700 font-medium hover:text-primary hover:scale-105 transition-all duration-200"
+                  className="text-sm text-gray-700 font-medium hover:text-green-600 hover:scale-110 transition-all duration-200"
                 >
                   {link.label}
                 </Link>
@@ -57,13 +55,13 @@ export function Header() {
             </nav>
 
             {/* Actions */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <Link href="/panier">
                 <Button
-                  size="icon"
-                  className="relative bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-700 hover:to-emerald-600 text-white shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                  size="sm"
+                  className="relative bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-700 hover:to-emerald-600 text-white rounded-full h-9 w-9 p-0"
                 >
-                  <ShoppingCart className="w-5 h-5" />
+                  <ShoppingCart className="w-4 h-4" />
                   {getTotalItems() > 0 && (
                     <motion.span
                       initial={{ scale: 0 }}
@@ -79,11 +77,11 @@ export function Header() {
               {/* Menu Mobile */}
               <Button
                 variant="ghost"
-                size="icon"
-                className="md:hidden text-gray-700"
+                size="sm"
+                className="md:hidden text-gray-700 h-9 w-9 p-0"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </Button>
             </div>
           </div>
@@ -95,15 +93,15 @@ export function Header() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="md:hidden border-t border-gray-100"
+                className="md:hidden border-t border-gray-200/50 overflow-hidden"
               >
-                <nav className="px-6 py-4 flex flex-col gap-3">
+                <nav className="px-6 py-4 flex flex-col gap-2">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-gray-700 hover:text-primary transition-colors font-medium py-2"
+                      className="text-sm text-gray-700 hover:text-green-600 transition-colors font-medium py-2"
                     >
                       {link.label}
                     </Link>
