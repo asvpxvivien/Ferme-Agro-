@@ -10,8 +10,8 @@ import { useState } from "react"
 export default function CataloguePage() {
   const [selectedCategory, setSelectedCategory] = useState("Tous")
 
-  const filteredProducts = selectedCategory === "Tous" 
-    ? products 
+  const filteredProducts = selectedCategory === "Tous"
+    ? products
     : products.filter(product => product.category === selectedCategory)
 
   return (
@@ -24,7 +24,7 @@ export default function CataloguePage() {
               Notre <span className="text-primary">Catalogue</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Découvrez l'ensemble de nos produits frais et naturels, cultivés avec passion dans notre ferme familiale.
+              Découvrez l'ensemble de nos produits frais et naturels, cultivés avec soins et disponible rien que pour vous.
             </p>
           </div>
 
@@ -34,11 +34,10 @@ export default function CataloguePage() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  selectedCategory === category
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === category
                     ? "bg-primary text-primary-foreground shadow-lg"
                     : "bg-secondary text-foreground hover:bg-secondary/80"
-                }`}
+                  }`}
               >
                 {category}
               </button>

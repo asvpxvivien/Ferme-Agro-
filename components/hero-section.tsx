@@ -97,8 +97,8 @@ export function HeroSection() {
               textShadow: "0 0 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.6)"
             }}
           >
-            Découvrez nos produits frais et authentiques, cultivés avec passion et respect de la nature.
-            Une ferme familiale au service de votre bien-être.
+            Découvrez nos produits frais et authentiques, cultivés de manière naturelle.
+            Une ferme AgroEcologique au service de votre bien-être.
           </motion.p>
 
           {/* Boutons CTA */}

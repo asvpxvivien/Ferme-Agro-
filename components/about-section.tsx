@@ -2,28 +2,28 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Heart, Sprout, Users, Award } from "lucide-react"
+import { Leaf, Sprout, Rabbit, Award } from "lucide-react"
 
 const values = [
   {
-    icon: Heart,
+    icon: Leaf,
     title: "Passion",
-    description: "Un amour authentique pour la terre et nos animaux",
+    description: "Une passion sincère pour la nature, le sol et le bien-être animal, au cœur de chaque récolte.",
   },
   {
     icon: Sprout,
     title: "Naturel",
-    description: "Des produits cultivés sans pesticides ni produits chimiques",
+    description: "Des pratiques agricoles respectueuses, sans pesticides ni intrants chimiques, pour des légumes frais et bio.",
   },
   {
-    icon: Users,
-    title: "Familial",
-    description: "Une exploitation transmise de génération en génération",
+    icon: Rabbit,
+    title: "Respect",
+    description: "Nous cultivons et élevons dans le respect de la nature, en prenant soin de la terre, des plantes et des animaux pour vous offrir des produits sains et authentiques.",
   },
   {
     icon: Award,
     title: "Qualité",
-    description: "Un engagement pour l'excellence à chaque étape",
+    description: "Des produits sains, authentiques et savoureux, issus d’un mode de production éthique et respectueux de l’environnement.",
   },
 ]
 
@@ -39,10 +39,10 @@ export function AboutSection() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Notre Ferme <span className="text-primary">Authentique</span>
+            Notre Ferme <span className="text-primary">AgroEcologique</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Découvrez notre exploitation familiale où tradition et qualité se rencontrent pour vous offrir le meilleur de la nature.
+            Ici, chaque plante et chaque animal grandit en équilibre avec la nature, donnant des produits pleins de saveur et de vivalité.
           </p>
         </motion.div>
 
@@ -100,8 +100,8 @@ export function AboutSection() {
             {/* Badge flottant */}
             <motion.div
               animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-              className="absolute -bottom-6 -right-6 bg-green-600 text-white rounded-2xl p-6 shadow-xl"
+              transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+              className="absolute -bottom-6 -right-6 bg-green-600 text-white rounded-2xl p-6 shadow-xl flex flex-col items-center"
             >
               <div className="text-4xl font-bold">100%</div>
               <div className="text-sm font-semibold">Bio</div>
@@ -115,18 +115,17 @@ export function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-center">
               Agriculture Naturelle
               <br />
               <span className="text-primary">& Locale</span>
             </h2>
+
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Nichée au cœur de la campagne, notre ferme familiale perpétue une tradition agricole authentique. Nous
-              cultivons nos terres avec respect et élevons nos animaux en plein air, dans le respect de leur bien-être.
+              A la ferme ASSIKO Chaque culture et chaque élevage est réalisé dans le respect de la nature et du bien-être animal. Les produits sont cultivés et élevés de manière responsable pour conserver toute leur qualité et leur saveur.
             </p>
             <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
-              Chaque produit que nous proposons est le fruit d'un travail passionné et d'un savoir-faire transmis de
-              génération en génération. Notre engagement : vous offrir le meilleur de la nature, directement du
+              Chaque produit que nous proposons est sain, naturel et authentique, pensé pour vous offrir le meilleur de la ferme directement à votre table. Notre engagement : vous offrir le meilleur de la nature, directement du
               producteur au consommateur.
             </p>
 

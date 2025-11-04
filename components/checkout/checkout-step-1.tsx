@@ -174,9 +174,11 @@ export function CheckoutStep1() {
                 <button
                   onClick={() => removeItem(item.id, item.purchaseType || "detail")}
                   className="hidden sm:block absolute top-4 right-4 text-red-500 hover:text-red-700 transition-colors"
+                  aria-label="Supprimer l’article"
                 >
                   <Trash2 className="w-5 h-5" />
                 </button>
+
               </div>
             </div>
           )

@@ -81,19 +81,16 @@ export function CheckoutStep2() {
           {/* Farm Pickup */}
           <button
             onClick={() => setDeliveryMethod("farm")}
-            className={`p-6 rounded-lg border-2 transition-all text-left ${
-              deliveryMethod === "farm"
-                ? "border-primary bg-primary/5"
-                : "border-gray-200 hover:border-primary/50"
-            }`}
+            className={`p-6 rounded-lg border-2 transition-all text-left ${deliveryMethod === "farm"
+              ? "border-primary bg-primary/5"
+              : "border-gray-200 hover:border-primary/50"
+              }`}
           >
             <div className="flex items-start gap-4">
-              <div className={`p-3 rounded-full ${
-                deliveryMethod === "farm" ? "bg-primary/10" : "bg-gray-100"
-              }`}>
-                <Store className={`w-6 h-6 ${
-                  deliveryMethod === "farm" ? "text-primary" : "text-gray-600"
-                }`} />
+              <div className={`p-3 rounded-full ${deliveryMethod === "farm" ? "bg-primary/10" : "bg-gray-100"
+                }`}>
+                <Store className={`w-6 h-6 ${deliveryMethod === "farm" ? "text-primary" : "text-gray-600"
+                  }`} />
               </div>
               <div className="flex-1">
                 <h3 className="font-bold text-lg mb-1">Retrait à la ferme</h3>
@@ -114,19 +111,16 @@ export function CheckoutStep2() {
           {/* Home Delivery */}
           <button
             onClick={() => setDeliveryMethod("home")}
-            className={`p-6 rounded-lg border-2 transition-all text-left ${
-              deliveryMethod === "home"
-                ? "border-primary bg-primary/5"
-                : "border-gray-200 hover:border-primary/50"
-            }`}
+            className={`p-6 rounded-lg border-2 transition-all text-left ${deliveryMethod === "home"
+              ? "border-primary bg-primary/5"
+              : "border-gray-200 hover:border-primary/50"
+              }`}
           >
             <div className="flex items-start gap-4">
-              <div className={`p-3 rounded-full ${
-                deliveryMethod === "home" ? "bg-primary/10" : "bg-gray-100"
-              }`}>
-                <Home className={`w-6 h-6 ${
-                  deliveryMethod === "home" ? "text-primary" : "text-gray-600"
-                }`} />
+              <div className={`p-3 rounded-full ${deliveryMethod === "home" ? "bg-primary/10" : "bg-gray-100"
+                }`}>
+                <Home className={`w-6 h-6 ${deliveryMethod === "home" ? "text-primary" : "text-gray-600"
+                  }`} />
               </div>
               <div className="flex-1">
                 <h3 className="font-bold text-lg mb-1">Livraison à domicile</h3>
@@ -224,11 +218,8 @@ export function CheckoutStep2() {
                     <SelectItem value="Calavi">Calavi</SelectItem>
                     <SelectItem value="Cotonou">Cotonou</SelectItem>
                     <SelectItem value="Akassato">Akassato</SelectItem>
-                    <SelectItem value="Porto-Novo">Porto-Novo</SelectItem>
-                    <SelectItem value="Abomey-Calavi">Abomey-Calavi</SelectItem>
                     <SelectItem value="Godomey">Godomey</SelectItem>
                     <SelectItem value="Sèmè-Kpodji">Sèmè-Kpodji</SelectItem>
-                    <SelectItem value="Ouidah">Ouidah</SelectItem>
                   </SelectContent>
                 </Select>
                 {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city}</p>}
@@ -255,7 +246,7 @@ export function CheckoutStep2() {
                 <h4 className="font-semibold text-green-900 mb-1">Adresse de la ferme</h4>
                 <p className="text-sm text-green-700">
                   Ferme AgroEcologique ASSIKO<br />
-                  Calavi, Bénin
+                  Sis à Calavi, Bénin
                 </p>
               </div>
             </div>
