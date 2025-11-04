@@ -24,6 +24,11 @@ export function HeroSection() {
       <div className="absolute inset-0 z-0">
         <motion.div
           className="flex h-full"
+          style={{
+            willChange: "transform",
+            transform: "translateZ(0)",
+            backfaceVisibility: "hidden",
+          }}
           animate={{
             x: [0, -3200], // Défile de 3200px (8 images * 400px)
           }}
@@ -38,14 +43,23 @@ export function HeroSection() {
         >
           {/* Dupliquer les images pour un défilement infini */}
           {[...heroImages, ...heroImages].map((image, index) => (
-            <div key={index} className="relative h-full w-[400px] flex-shrink-0">
+            <div
+              key={index}
+              className="relative h-full w-[400px] flex-shrink-0"
+              style={{
+                transform: "translateZ(0)",
+                backfaceVisibility: "hidden",
+              }}
+            >
               <Image
                 src={image}
                 alt={`Ferme ASSIKO ${index + 1}`}
                 fill
                 className="object-cover"
                 priority={index < 4}
-                quality={90}
+                quality={index < 4 ? 85 : 75}
+                loading={index < 4 ? "eager" : "lazy"}
+                sizes="(max-width: 640px) 300px, 400px"
               />
             </div>
           ))}
