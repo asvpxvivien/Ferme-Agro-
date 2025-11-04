@@ -17,6 +17,9 @@ export default function CheckoutPage() {
   const { currentStep, checkoutItems, setCheckoutItems } = useCheckout()
 
   useEffect(() => {
+    // Scroll to top when entering checkout
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+
     // Si le panier est vide, rediriger vers la page panier
     if (cart.length === 0 && checkoutItems.length === 0) {
       router.push("/panier")
@@ -36,18 +39,18 @@ export default function CheckoutPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white pt-20 pb-16">
-      <div className="container mx-auto px-4 max-w-6xl">
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-3 max-w-6xl pt-2">
         {/* Back Button */}
-        <Link href="/panier" className="inline-block mb-4">
-          <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900">
+        <Link href="/panier" className="inline-block mb-1">
+          <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900 h-8">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Retour au panier
           </Button>
         </Link>
 
         {/* Progress Steps */}
-        <div className="mb-8 max-w-3xl mx-auto">
+        <div className="mb-3 max-w-3xl mx-auto">
           <div className="flex items-center justify-between">
             {steps.map((step, index) => (
               <div key={step.number} className="flex items-center flex-1">
@@ -91,7 +94,7 @@ export default function CheckoutPage() {
         </div>
 
         {/* Step Content */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6 max-w-4xl mx-auto">
+        <div className="rounded-lg border border-border p-4 sm:p-6 max-w-4xl mx-auto">
           {currentStep === 1 && <CheckoutStep1 />}
           {currentStep === 2 && <CheckoutStep2 />}
           {currentStep === 3 && <CheckoutStep3 />}

@@ -66,7 +66,7 @@ export function CheckoutStep1() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">Vérifiez votre commande</h2>
+      <h2 className="text-2xl font-bold text-gray-900 mb-4">Vérifiez votre commande</h2>
 
       {/* Product List */}
       <div className="space-y-4 mb-6">
@@ -103,22 +103,12 @@ export function CheckoutStep1() {
                           En gros (-15%)
                         </span>
                       )}
-                      {/* Bouton supprimer sur mobile - sous le prix */}
-                      <div className="sm:hidden mt-1">
-                        <button
-                          onClick={() => removeItem(item.id, item.purchaseType || "detail")}
-                          className="text-red-500 hover:text-red-700 transition-colors flex items-center gap-1 text-sm"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                          <span>Supprimer</span>
-                        </button>
-                      </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Quantity Controls */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between mt-3 gap-3">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between mt-2 gap-3">
                   <div className="flex items-center gap-2">
                     <Button
                       variant="outline"
@@ -169,16 +159,6 @@ export function CheckoutStep1() {
                     </div>
                   </div>
                 </div>
-
-                {/* Bouton supprimer sur desktop - en haut à droite */}
-                <button
-                  onClick={() => removeItem(item.id, item.purchaseType || "detail")}
-                  className="hidden sm:block absolute top-4 right-4 text-red-500 hover:text-red-700 transition-colors"
-                  aria-label="Supprimer l’article"
-                >
-                  <Trash2 className="w-5 h-5" />
-                </button>
-
               </div>
             </div>
           )

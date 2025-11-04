@@ -124,6 +124,13 @@
     @apply bg-background text-foreground;
   }
 
+  /* Empêche le scroll horizontal sur mobile */
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
   /* Force le mode clair et désactive le mode sombre */
   html {
     color-scheme: light !important;

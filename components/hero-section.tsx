@@ -19,7 +19,7 @@ const heroImages = [
 
 export function HeroSection() {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative h-screen flex items-start justify-center overflow-hidden bg-black pt-32 sm:pt-20 md:items-center md:pt-0">
       {/* Carousel défilant horizontalement */}
       <div className="absolute inset-0 z-0">
         <motion.div

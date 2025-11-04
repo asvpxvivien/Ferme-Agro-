@@ -92,11 +92,11 @@ export function AddToCartModal({ isOpen, onClose, onConfirm, product }: AddToCar
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed left-0 right-0 bottom-0 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:bottom-auto z-50 w-full md:max-w-md mx-0 md:mx-4 max-h-[90vh] md:max-h-none overflow-y-auto"
+            className="fixed inset-0 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:inset-auto z-50 w-full md:max-w-md mx-0 md:mx-4 h-full md:h-auto overflow-y-auto"
           >
-            <div className="bg-card rounded-t-3xl md:rounded-2xl shadow-2xl overflow-hidden border-t border-border md:border">
+            <div className="bg-card min-h-full md:min-h-0 md:rounded-2xl shadow-2xl overflow-hidden md:border border-border flex flex-col">
               {/* Header */}
-              <div className="relative h-32 md:h-40 bg-secondary/20">
+              <div className="relative h-64 md:h-40 bg-secondary/20 flex-shrink-0">
                 <Image src={product.image || "/placeholder.svg"} alt={product.name} fill className="object-cover" />
                 <button
                   onClick={handleClose}
@@ -109,7 +109,7 @@ export function AddToCartModal({ isOpen, onClose, onConfirm, product }: AddToCar
               </div>
 
               {/* Content */}
-              <div className="p-4">
+              <div className="p-4 flex-1 overflow-y-auto">
                 <div className="flex items-start gap-3 mb-3">
                   <div className="bg-primary/10 p-2 rounded-full">
                     <ShoppingCart className="w-5 h-5 text-primary" />
@@ -223,7 +223,8 @@ export function AddToCartModal({ isOpen, onClose, onConfirm, product }: AddToCar
 
                 {/* Link to cart */}
                 <Link href="/panier" className="block mt-3">
-                  <Button variant="ghost" className="w-full text-sm">
+                  <Button variant="outline" className="w-full text-sm border-2 border-primary/30 hover:bg-primary/5">
+                    <ShoppingCart className="w-4 h-4 mr-2" />
                     Voir mon panier
                   </Button>
                 </Link>

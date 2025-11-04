@@ -22,7 +22,7 @@ export default function PanierPage() {
     .slice(0, 4)
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-background">
       <Header />
       <main className="flex-1 pt-20 pb-8">
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -65,8 +65,8 @@ export default function PanierPage() {
                   </div>
 
                   <div className="divide-y divide-border">
-                    {cart.map((item) => (
-                      <div key={item.id} className="p-4 flex flex-col sm:flex-row gap-4">
+                    {cart.map((item, index) => (
+                      <div key={`${item.id}-${item.purchaseType || 'detail'}-${index}`} className="p-4 flex flex-col sm:flex-row gap-4">
                         <div className="relative w-full sm:w-20 h-20 rounded-lg overflow-hidden bg-secondary/10 flex-shrink-0">
                           <img
                             src={item.image || "/placeholder.svg"}
@@ -82,16 +82,16 @@ export default function PanierPage() {
                               <p className="text-sm text-muted-foreground mb-2">{item.category}</p>
                               <div className="flex flex-col gap-2">
                                 <p className="text-primary font-bold">{item.price.toLocaleString('fr-FR')} FCFA / unité</p>
-                                {/* Corbeille sur mobile - sous le prix */}
+                                {/* Bouton supprimer sur mobile - sous le prix */}
                                 <div className="sm:hidden">
                                   <Button
-                                    variant="ghost"
+                                    variant="outline"
                                     size="sm"
                                     onClick={() => removeFromCart(item.id)}
-                                    className="text-muted-foreground hover:text-destructive p-0 h-auto"
+                                    className="text-destructive border-destructive/30 hover:bg-destructive hover:text-white h-8 px-3"
                                   >
-                                    <X className="w-4 h-4 mr-1" />
-                                    <span className="text-xs">Supprimer</span>
+                                    <X className="w-3.5 h-3.5 mr-1.5" />
+                                    <span className="text-xs font-medium">Supprimer</span>
                                   </Button>
                                 </div>
                               </div>
@@ -178,7 +178,9 @@ export default function PanierPage() {
 
                 {recommendedProducts.length > 0 && (
                   <div className="relative">
-                    <h3 className="font-bold text-foreground mb-4 text-center">Vous aimerez aussi</h3>
+                    <h3 className="font-bold text-foreground mb-4 text-center text-xl">
+                      Vous aimerez <span className="text-primary">aussi</span>
+                    </h3>
                     <div className="grid grid-cols-1 gap-4">
                       {recommendedProducts.slice(0, 2).map((product, index) => (
                         <ProductCard key={product.id} product={product} index={index} />

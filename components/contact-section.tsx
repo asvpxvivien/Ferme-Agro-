@@ -7,7 +7,7 @@ import Link from "next/link"
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-white to-green-50/30">
+    <section id="contact" className="py-20">
       <div className="container mx-auto px-6 sm:px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

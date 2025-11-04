@@ -74,7 +74,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-background">
       <Header />
       <main className="flex-1 pt-20 pb-16">
         <div className="max-w-6xl mx-auto px-6 py-8">
@@ -201,7 +201,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                 <Button
                   onClick={() => {
                     handleAddToCart()
-                    setTimeout(() => window.location.href = "/checkout", 500)
+                    setTimeout(() => window.location.href = "/panier", 500)
                   }}
                   variant="outline"
                   size="default"
