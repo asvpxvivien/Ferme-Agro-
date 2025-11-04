@@ -203,36 +203,25 @@ export function CheckoutStep2() {
               {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
             </div>
 
-            {/* City and Postal Code */}
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="city">Ville *</Label>
-                <Select
-                  value={customerInfo.city}
-                  onValueChange={(value) => handleInputChange("city", value)}
-                >
-                  <SelectTrigger className={errors.city ? "border-red-500" : ""}>
-                    <SelectValue placeholder="Sélectionnez une ville" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Calavi">Calavi</SelectItem>
-                    <SelectItem value="Cotonou">Cotonou</SelectItem>
-                    <SelectItem value="Akassato">Akassato</SelectItem>
-                    <SelectItem value="Godomey">Godomey</SelectItem>
-                    <SelectItem value="Sèmè-Kpodji">Sèmè-Kpodji</SelectItem>
-                  </SelectContent>
-                </Select>
-                {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city}</p>}
-              </div>
-              <div>
-                <Label htmlFor="postalCode">Code postal</Label>
-                <Input
-                  id="postalCode"
-                  value={customerInfo.postalCode}
-                  onChange={(e) => handleInputChange("postalCode", e.target.value)}
-                  placeholder="Code postal"
-                />
-              </div>
+            {/* City */}
+            <div>
+              <Label htmlFor="city">Ville *</Label>
+              <Select
+                value={customerInfo.city}
+                onValueChange={(value) => handleInputChange("city", value)}
+              >
+                <SelectTrigger className={errors.city ? "border-red-500" : ""}>
+                  <SelectValue placeholder="Sélectionnez une ville" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Calavi">Calavi</SelectItem>
+                  <SelectItem value="Cotonou">Cotonou</SelectItem>
+                  <SelectItem value="Akassato">Akassato</SelectItem>
+                  <SelectItem value="Godomey">Godomey</SelectItem>
+                  <SelectItem value="Sèmè-Kpodji">Sèmè-Kpodji</SelectItem>
+                </SelectContent>
+              </Select>
+              {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city}</p>}
             </div>
           </>
         )}

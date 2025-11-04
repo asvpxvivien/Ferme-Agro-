@@ -160,7 +160,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <Card className="border-2">
+              <Card className="border-2 !bg-transparent">
                 <CardContent className="p-8">
                   {isSuccess ? (
                     <motion.div

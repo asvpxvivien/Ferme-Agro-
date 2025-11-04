@@ -189,7 +189,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex gap-2">
                 <Button
                   onClick={handleAddToCart}
                   size="default"
@@ -200,14 +200,13 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                 </Button>
                 <Button
                   onClick={() => {
-                    handleAddToCart()
-                    setTimeout(() => window.location.href = "/panier", 500)
+                    window.location.href = "/panier"
                   }}
                   variant="outline"
                   size="default"
-                  className="flex-1"
+                  className="flex-1 border-primary text-primary hover:bg-primary hover:text-white"
                 >
-                  Commander maintenant
+                  Commander
                 </Button>
               </div>
             </div>

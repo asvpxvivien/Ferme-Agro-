@@ -4,7 +4,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useCart } from "@/lib/cart-context"
 import { Button } from "@/components/ui/button"
-import { Minus, Plus, X, ShoppingCart as CartIcon } from "lucide-react"
+import { Minus, Plus, X, ShoppingCart as CartIcon, ArrowLeft } from "lucide-react"
 import { ProductCard } from "@/components/product-card"
 import { products } from "@/lib/products-data"
 import Link from "next/link"
@@ -163,17 +163,20 @@ export default function PanierPage() {
                     </div>
                   </div>
 
-                  <Link href="/checkout">
-                    <Button className="w-full bg-primary hover:bg-primary/90 mb-4">
-                      Passer la commande
-                    </Button>
-                  </Link>
-
-                  <Link href="/catalogue">
-                    <Button variant="outline" className="w-full">
-                      Continuer les achats
-                    </Button>
-                  </Link>
+                  <div className="flex gap-2">
+                    <Link href="/catalogue" className="flex-1">
+                      <Button variant="outline" className="w-full border-red-500 text-red-500 hover:bg-red-500 hover:text-white">
+                        <ArrowLeft className="w-4 h-4 mr-1" />
+                        Retour
+                      </Button>
+                    </Link>
+                    <Link href="/checkout" className="flex-1">
+                      <Button className="w-full bg-primary hover:bg-primary/90">
+                        <CartIcon className="w-4 h-4 mr-1" />
+                        Commander
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
 
                 {recommendedProducts.length > 0 && (

@@ -79,27 +79,27 @@ export function ProductCard({ product, index }: ProductCardProps) {
               <span className="text-muted-foreground text-xs">/ {product.unit}</span>
             </div>
           </CardContent>
-          <CardFooter className="p-3 pt-0 flex flex-col sm:flex-row gap-2">
-            {/* Bouton Voir détails sur mobile */}
-            <Link href={`/produit/${product.id}`} className="w-full sm:hidden">
+          <CardFooter className="p-3 pt-0 flex flex-row gap-2">
+            {/* Bouton Voir détails */}
+            <Link href={`/produit/${product.id}`} className="flex-1">
               <Button
                 variant="outline"
-                className="w-full h-9 py-1.5 px-3 text-sm border-primary text-primary hover:bg-primary hover:text-white transition-all"
+                className="w-full h-9 py-1.5 px-2 text-xs border-primary text-primary hover:bg-primary hover:text-white transition-all"
                 aria-label={`Voir les détails de ${product.name}`}
               >
-                <Eye className="w-4 h-4 mr-1.5" aria-hidden="true" />
-                Voir détails
+                <Eye className="w-3.5 h-3.5 mr-1" aria-hidden="true" />
+                Détails
               </Button>
             </Link>
 
             {/* Bouton Ajouter au panier */}
             <Button
               onClick={handleAddToCart}
-              className="w-full h-9 py-1.5 px-3 group/btn bg-primary hover:bg-primary/90 transition-all duration-300 hover:scale-[1.02] text-sm"
+              className="flex-1 h-9 py-1.5 px-2 group/btn bg-primary hover:bg-primary/90 transition-all duration-300 text-xs"
               aria-label={`Ajouter ${product.name} au panier`}
             >
-              <ShoppingCart className="w-4 h-4 mr-1.5 group-hover/btn:scale-110 transition-transform duration-300" aria-hidden="true" />
-              Ajouter au panier
+              <ShoppingCart className="w-3.5 h-3.5 mr-1 group-hover/btn:scale-110 transition-transform duration-300" aria-hidden="true" />
+              Panier
             </Button>
           </CardFooter>
         </Card>

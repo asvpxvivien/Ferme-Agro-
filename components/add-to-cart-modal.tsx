@@ -212,10 +212,10 @@ export function AddToCartModal({ isOpen, onClose, onConfirm, product }: AddToCar
 
                 {/* Actions */}
                 <div className="flex gap-2">
-                  <Button onClick={handleClose} variant="outline" className="flex-1 bg-transparent">
+                  <Button onClick={handleClose} variant="outline" className="flex-1 border-red-500 text-red-500 hover:bg-red-500 hover:text-white">
                     Annuler
                   </Button>
-                  <Button onClick={handleConfirm} className="flex-1 bg-primary hover:bg-primary/90">
+                  <Button onClick={handleConfirm} className="flex-1 bg-primary hover:bg-primary/90 hover:scale-105 transition-transform">
                     <Check className="w-4 h-4 mr-1" />
                     Confirmer
                   </Button>
@@ -223,7 +223,7 @@ export function AddToCartModal({ isOpen, onClose, onConfirm, product }: AddToCar
 
                 {/* Link to cart */}
                 <Link href="/panier" className="block mt-3">
-                  <Button variant="outline" className="w-full text-sm border-2 border-primary/30 hover:bg-primary/5">
+                  <Button variant="outline" className="w-full text-sm text-primary hover:bg-primary hover:text-white transition-colors">
                     <ShoppingCart className="w-4 h-4 mr-2" />
                     Voir mon panier
                   </Button>

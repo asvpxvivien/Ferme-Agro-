@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Fond dégradé vert (comme dans le header) -->
+  <defs>
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#16a34a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fond arrondi avec le dégradé -->
+  <rect x="10" y="10" width="80" height="80" rx="16" ry="16" fill="url(#greenGradient)"/>
+
+  <!-- Icône Leaf (feuille) en blanc - copie exacte de Lucide -->
+  <g transform="translate(50, 50) scale(1.8)">
+    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"
+          fill="white"
+          stroke="white"
+          stroke-width="1"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          transform="translate(-12, -12)"/>
+    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"
+          fill="none"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          transform="translate(-12, -12)"/>
+  </g>
+</svg>

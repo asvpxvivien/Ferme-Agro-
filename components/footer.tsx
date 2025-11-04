@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Leaf, Facebook, Instagram, Clock } from "lucide-react"
+import { Leaf, Facebook, Clock } from "lucide-react"
 
 // Icône TikTok personnalisée en SVG
 function TikTokIcon({ className }: { className?: string }) {
@@ -40,15 +40,6 @@ export function Footer() {
                 aria-label="Suivez-nous sur Facebook"
               >
                 <Facebook className="w-4 h-4" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-white shadow-sm hover:shadow-md hover:bg-primary hover:text-white hover:scale-110 flex items-center justify-center transition-all duration-200"
-                aria-label="Suivez-nous sur Instagram"
-              >
-                <Instagram className="w-4 h-4" />
               </a>
               <a
                 href="https://tiktok.com"

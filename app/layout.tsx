@@ -16,6 +16,10 @@ export const metadata: Metadata = {
     "Ferme AgroEcologique ASSIKO à Calavi, Bénin. Produits biologiques 100% naturels : poulets fermiers, œufs frais, lapins, légumes bio. Agriculture écologique et locale. Livraison disponible.",
   keywords: "ferme bio Bénin, produits naturels Calavi, poulet fermier, œufs bio, légumes biologiques, agriculture écologique, produits frais Bénin, ferme Assiko",
   authors: [{ name: "Ferme AgroEcologique ASSIKO" }],
+  icons: {
+    icon: '/icon.svg',
+    apple: '/icon.svg',
+  },
   openGraph: {
     title: "Ferme AgroEcologique ASSIKO - Produits Bio & Naturels",
     description: "Découvrez nos produits biologiques 100% naturels : poulets fermiers, œufs frais, légumes bio cultivés à Calavi, Bénin",
