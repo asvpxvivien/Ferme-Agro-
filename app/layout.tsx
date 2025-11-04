@@ -12,6 +12,7 @@ import { Suspense } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ferme-familiale.vercel.app'),
   title: "Ferme AgroEcologique ASSIKO - Produits Bio & Naturels | Bénin",
   description:
     "Ferme AgroEcologique ASSIKO à Calavi, Bénin. Produits biologiques 100% naturels : poulets fermiers, œufs frais, lapins, légumes bio. Agriculture écologique et locale. Livraison disponible.",
@@ -26,6 +27,13 @@ export const metadata: Metadata = {
     description: "Découvrez nos produits biologiques 100% naturels : poulets fermiers, œufs frais, légumes bio cultivés à Calavi, Bénin",
     type: "website",
     locale: "fr_BJ",
+    url: 'https://ferme-familiale.vercel.app',
+    siteName: 'Ferme AgroEcologique ASSIKO',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Ferme AgroEcologique ASSIKO - Produits Bio & Naturels",
+    description: "Découvrez nos produits biologiques 100% naturels : poulets fermiers, œufs frais, légumes bio cultivés à Calavi, Bénin",
   },
 }
 
