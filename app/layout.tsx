@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css"
 import { CartProvider } from "@/lib/cart-context"
 import { CheckoutProvider } from "@/lib/checkout-context"
@@ -52,6 +53,7 @@ export default function RootLayout({
             </CartProvider>
           </Suspense>
           <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
