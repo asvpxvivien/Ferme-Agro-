@@ -48,9 +48,14 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
 
   const handlePurchaseTypeChange = (type: "detail" | "gros") => {
     setPurchaseType(type)
-    // Si on passe en gros et la quantité est < 5, on la met à 5
-    if (type === "gros" && quantity < 5) {
-      setQuantity(5)
+    if (type === "gros") {
+      // Si on passe en gros et la quantité est < 5, on la met à 5
+      if (quantity < 5) {
+        setQuantity(5)
+      }
+    } else {
+      // Si on passe en détail, on remet à 1
+      setQuantity(1)
     }
   }
 
