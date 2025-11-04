@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Leaf, Sprout, Rabbit, Award } from "lucide-react"
+import { Wheat, Sprout, Rabbit, Award } from "lucide-react"
 
 const values = [
   {
-    icon: Leaf,
+    icon: Wheat,
     title: "Passion",
     description: "Une passion sincère pour la nature, le sol et le bien-être animal, au cœur de chaque récolte.",
   },

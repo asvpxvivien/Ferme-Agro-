@@ -24,7 +24,7 @@ export const ContactConfirmationEmail = ({
       <Container style={container}>
         {/* Header */}
         <Section style={header}>
-          <Heading style={h1}>🌾 Ferme AgroEcologique ASSIKO</Heading>
+          <Heading style={h1}>🌿 Ferme AgroEcologique ASSIKO</Heading>
           <Text style={headerSubtitle}>MESSAGE REÇU</Text>
         </Section>
 
@@ -32,7 +32,7 @@ export const ContactConfirmationEmail = ({
         <Section style={section}>
           <Text style={greeting}>Bonjour <strong>{name}</strong>,</Text>
           <Text style={paragraph}>
-            Merci de nous avoir contactés ! 🌾
+            Merci de nous avoir contactés ! 🌿
           </Text>
           <Text style={paragraph}>
             Votre message a bien été reçu et notre équipe vous répondra dans les plus brefs délais.

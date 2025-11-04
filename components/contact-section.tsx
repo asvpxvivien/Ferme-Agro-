@@ -20,7 +20,7 @@ export function ContactSection() {
             Contactez-<span className="text-primary">nous</span>
           </h2>
           <p className="text-lg md:text-2xl text-gray-600 max-w-3xl mx-auto mb-10">
-            Une question sur nos produits ? Besoin d'informations ?<br className="hidden sm:block" />Notre équipe est là pour vous répondre !
+            Une question sur nos produits ? Besoin d'informations ?<br className="hidden sm:block" />Nous sommes là pour vous répondre !
           </p>
           <div className="flex justify-center px-4">
             <Link href="/contact" className="w-full sm:w-auto max-w-md sm:max-w-none">

@@ -49,7 +49,7 @@ export const OrderConfirmationEmail = ({
       <Container style={container}>
         {/* Header */}
         <Section style={header}>
-          <Heading style={h1}>🌾 Ferme AgroEcologique ASSIKO</Heading>
+          <Heading style={h1}>🌿 Ferme AgroEcologique ASSIKO</Heading>
           <Text style={headerSubtitle}>COMMANDE CONFIRMÉE</Text>
         </Section>
 
@@ -57,7 +57,7 @@ export const OrderConfirmationEmail = ({
         <Section style={section}>
           <Text style={greeting}>Bonjour <strong>{customerName}</strong>,</Text>
           <Text style={paragraph}>
-            Merci pour votre confiance ! 🌾
+            Merci pour votre confiance ! 🌿
           </Text>
           <Text style={paragraph}>
             Votre commande a bien été enregistrée et sera traitée dans les plus brefs délais.

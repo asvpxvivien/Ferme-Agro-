@@ -34,7 +34,7 @@ export const ContactNotificationEmail = ({
       <Container style={container}>
         {/* Header */}
         <Section style={header}>
-          <Heading style={h1}>🌾 Ferme AgroEcologique ASSIKO</Heading>
+          <Heading style={h1}>🌿 Ferme AgroEcologique ASSIKO</Heading>
           <Text style={headerSubtitle}>NOUVEAU MESSAGE DE CONTACT</Text>
         </Section>
 
