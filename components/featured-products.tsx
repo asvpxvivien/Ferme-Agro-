@@ -24,7 +24,7 @@ export function FeaturedProducts() {
             Nos Produits <span className="text-primary">Vedettes</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Découvrez une sélection de nos meilleurs produits, cultivés et élevés avec soin dans notre ferme familiale.
+            Découvrez une sélection de nos meilleurs produits, cultivés et élevés avec soin dans notre ferme.
           </p>
         </motion.div>
 
