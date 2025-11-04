@@ -102,25 +102,40 @@ export const OrderNotificationEmail = ({
         {/* Order Items */}
         <Section style={section}>
           <Heading style={h2}>🛒 PRODUITS COMMANDÉS</Heading>
-          {items.map((item, index) => {
-            const itemPrice = item.purchaseType === "gros" ? item.price * 0.85 : item.price
-            const itemTotal = itemPrice * item.quantity
+          <div style={productsContainer}>
+            {items.map((item, index) => {
+              const itemPrice = item.purchaseType === "gros" ? item.price * 0.85 : item.price
+              const itemTotal = itemPrice * item.quantity
 
-            return (
-              <div key={index} style={productItem}>
-                <Text style={productName}>
-                  <strong>{item.name}</strong> × {item.quantity}
-                </Text>
-                <Text style={productDetails}>
-                  {itemPrice.toLocaleString("fr-FR")} FCFA / {item.unit}
-                  {item.purchaseType === "gros" && " (En gros -15%)"}
-                </Text>
-                <Text style={productTotal}>
-                  = <strong>{itemTotal.toLocaleString("fr-FR")} FCFA</strong>
-                </Text>
-              </div>
-            )
-          })}
+              return (
+                <div key={index} style={productItem}>
+                  <div style={productHeader}>
+                    <Text style={productName}>
+                      <strong>{item.name}</strong>
+                    </Text>
+                    {item.purchaseType === "gros" && (
+                      <span style={grossBadge}>EN GROS -15%</span>
+                    )}
+                  </div>
+
+                  <div style={productPriceRow}>
+                    <Text style={productDetails}>
+                      {itemPrice.toLocaleString("fr-FR", { minimumFractionDigits: 0 })} FCFA / {item.unit}
+                    </Text>
+                    <Text style={productQuantity}>
+                      × {item.quantity}
+                    </Text>
+                  </div>
+
+                  <div style={productTotalRow}>
+                    <Text style={productTotal}>
+                      TOTAL: <strong>{itemTotal.toLocaleString("fr-FR", { minimumFractionDigits: 0 })} FCFA</strong>
+                    </Text>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
         </Section>
 
         <Hr style={hr} />
@@ -128,15 +143,23 @@ export const OrderNotificationEmail = ({
         {/* Summary */}
         <Section style={section}>
           <Heading style={h2}>💰 RÉSUMÉ</Heading>
-          <Text style={summaryText}>
-            <strong>Sous-total:</strong> {subtotal.toLocaleString("fr-FR")} FCFA
-          </Text>
-          <Text style={summaryText}>
-            <strong>Livraison:</strong> {deliveryFee.toLocaleString("fr-FR")} FCFA
-          </Text>
-          <Text style={totalText}>
-            <strong>TOTAL:</strong> {total.toLocaleString("fr-FR")} FCFA
-          </Text>
+          <div style={summaryContainer}>
+            <div style={summaryRow}>
+              <Text style={summaryLabel}>Sous-total:</Text>
+              <Text style={summaryValue}>{subtotal.toLocaleString("fr-FR", { minimumFractionDigits: 0 })} FCFA</Text>
+            </div>
+            <div style={summaryRow}>
+              <Text style={summaryLabel}>Livraison:</Text>
+              <Text style={summaryValue}>
+                {deliveryFee === 0 ? "GRATUIT" : `${deliveryFee.toLocaleString("fr-FR", { minimumFractionDigits: 0 })} FCFA`}
+              </Text>
+            </div>
+            <Hr style={summaryDivider} />
+            <div style={summaryRow}>
+              <Text style={totalLabel}>TOTAL À PAYER:</Text>
+              <Text style={totalValue}>{total.toLocaleString("fr-FR", { minimumFractionDigits: 0 })} FCFA</Text>
+            </div>
+          </div>
         </Section>
 
         {/* Notes */}
@@ -152,9 +175,14 @@ export const OrderNotificationEmail = ({
 
         {/* Footer */}
         <Hr style={hr} />
-        <Text style={footer}>
-          Email automatique - Ferme AgroEcologique ASSIKO
-        </Text>
+        <Section style={section}>
+          <Text style={footer}>
+            Email automatique - Ferme AgroEcologique ASSIKO
+          </Text>
+          <Text style={footerContact}>
+            📞 +229 97 44 62 30 | ✉️ fermeassiko@gmail.com
+          </Text>
+        </Section>
       </Container>
     </Body>
   </Html>
@@ -230,44 +258,118 @@ const infoText = {
   margin: "4px 0",
 }
 
+const productsContainer = {
+  marginTop: "12px",
+}
+
 const productItem = {
-  backgroundColor: "#f9fafb",
-  padding: "12px",
-  marginBottom: "8px",
-  borderRadius: "6px",
-  borderLeft: "4px solid #16a34a",
+  backgroundColor: "#ffffff",
+  padding: "20px",
+  marginBottom: "16px",
+  borderRadius: "12px",
+  border: "2px solid #e5e7eb",
+  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.05)",
+}
+
+const productHeader = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginBottom: "12px",
 }
 
 const productName = {
-  fontSize: "15px",
-  margin: "0 0 4px",
-  color: "#333333",
+  fontSize: "16px",
+  margin: "0",
+  color: "#111827",
+}
+
+const grossBadge = {
+  backgroundColor: "#fbbf24",
+  color: "#78350f",
+  fontSize: "11px",
+  fontWeight: "700",
+  padding: "4px 10px",
+  borderRadius: "12px",
+  letterSpacing: "0.5px",
+}
+
+const productPriceRow = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginBottom: "12px",
+  paddingBottom: "12px",
+  borderBottom: "1px solid #f3f4f6",
 }
 
 const productDetails = {
-  fontSize: "13px",
-  margin: "0 0 4px",
-  color: "#666666",
+  fontSize: "14px",
+  margin: "0",
+  color: "#6b7280",
 }
 
-const productTotal = {
-  fontSize: "14px",
-  margin: "4px 0 0",
-  color: "#16a34a",
+const productQuantity = {
+  fontSize: "15px",
+  margin: "0",
+  color: "#374151",
   fontWeight: "600",
 }
 
-const summaryText = {
-  fontSize: "15px",
-  lineHeight: "24px",
-  margin: "4px 0",
-  color: "#333333",
+const productTotalRow = {
+  marginTop: "8px",
 }
 
-const totalText = {
+const productTotal = {
+  fontSize: "16px",
+  margin: "0",
+  color: "#16a34a",
+  fontWeight: "700",
+  textAlign: "right" as const,
+}
+
+const summaryContainer = {
+  backgroundColor: "#f9fafb",
+  padding: "24px",
+  borderRadius: "12px",
+  marginTop: "12px",
+}
+
+const summaryRow = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginBottom: "12px",
+}
+
+const summaryLabel = {
+  fontSize: "15px",
+  margin: "0",
+  color: "#4b5563",
+}
+
+const summaryValue = {
+  fontSize: "15px",
+  margin: "0",
+  color: "#111827",
+  fontWeight: "600",
+}
+
+const summaryDivider = {
+  borderColor: "#d1d5db",
+  margin: "16px 0",
+}
+
+const totalLabel = {
   fontSize: "18px",
-  lineHeight: "28px",
-  margin: "12px 0 0",
+  margin: "0",
+  color: "#111827",
+  fontWeight: "bold",
+}
+
+const totalValue = {
+  fontSize: "22px",
+  margin: "0",
   color: "#16a34a",
   fontWeight: "bold",
 }
@@ -292,5 +394,15 @@ const footer = {
   fontSize: "12px",
   lineHeight: "16px",
   textAlign: "center" as const,
-  marginTop: "32px",
+  marginTop: "8px",
+  marginBottom: "8px",
+}
+
+const footerContact = {
+  color: "#16a34a",
+  fontSize: "13px",
+  lineHeight: "18px",
+  textAlign: "center" as const,
+  fontWeight: "600",
+  marginTop: "8px",
 }

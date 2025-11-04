@@ -23,20 +23,30 @@ export function AddToCartModal({ isOpen, onClose, onConfirm, product }: AddToCar
 
   if (!product) return null
 
+  const minQuantity = purchaseType === "gros" ? 5 : 1
+
   const handleIncrement = () => {
     setQuantity(prev => prev + 1)
   }
 
   const handleDecrement = () => {
-    if (quantity > 1) {
+    if (quantity > minQuantity) {
       setQuantity(prev => prev - 1)
     }
   }
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value)
-    if (!isNaN(value) && value > 0) {
+    if (!isNaN(value) && value >= minQuantity) {
       setQuantity(value)
+    }
+  }
+
+  const handlePurchaseTypeChange = (type: "detail" | "gros") => {
+    setPurchaseType(type)
+    // Si on passe en gros et la quantité est < 5, on la met à 5
+    if (type === "gros" && quantity < 5) {
+      setQuantity(5)
     }
   }
 
@@ -119,7 +129,7 @@ export function AddToCartModal({ isOpen, onClose, onConfirm, product }: AddToCar
                   <Label className="text-sm font-semibold mb-2 block">Type d'achat</Label>
                   <div className="grid grid-cols-2 gap-2">
                     <button
-                      onClick={() => setPurchaseType("detail")}
+                      onClick={() => handlePurchaseTypeChange("detail")}
                       className={`p-2 rounded-lg border-2 transition-all ${
                         purchaseType === "detail"
                           ? "border-primary bg-primary/10 text-primary"
@@ -127,10 +137,10 @@ export function AddToCartModal({ isOpen, onClose, onConfirm, product }: AddToCar
                       }`}
                     >
                       <div className="font-semibold text-sm">Détail</div>
-                      <div className="text-xs text-muted-foreground">Prix normal</div>
+                      <div className="text-xs text-muted-foreground">Achat à l'unité</div>
                     </button>
                     <button
-                      onClick={() => setPurchaseType("gros")}
+                      onClick={() => handlePurchaseTypeChange("gros")}
                       className={`p-2 rounded-lg border-2 transition-all ${
                         purchaseType === "gros"
                           ? "border-primary bg-primary/10 text-primary"
@@ -138,28 +148,30 @@ export function AddToCartModal({ isOpen, onClose, onConfirm, product }: AddToCar
                       }`}
                     >
                       <div className="font-semibold text-sm">En gros</div>
-                      <div className="text-xs text-muted-foreground">-15% de réduction</div>
+                      <div className="text-xs text-muted-foreground">Min. 5 unités · -15%</div>
                     </button>
                   </div>
                 </div>
 
                 {/* Quantity Selector */}
                 <div className="mb-3">
-                  <Label className="text-sm font-semibold mb-2 block">Quantité</Label>
+                  <Label className="text-sm font-semibold mb-2 block">
+                    Quantité {purchaseType === "gros" && <span className="text-xs font-normal text-muted-foreground">(minimum 5)</span>}
+                  </Label>
                   <div className="flex items-center gap-2">
                     <Button
                       type="button"
                       variant="outline"
                       size="icon"
                       onClick={handleDecrement}
-                      disabled={quantity <= 1}
+                      disabled={quantity <= minQuantity}
                       className="h-9 w-9"
                     >
                       <Minus className="h-4 w-4" />
                     </Button>
                     <Input
                       type="number"
-                      min="1"
+                      min={minQuantity}
                       value={quantity}
                       onChange={handleQuantityChange}
                       className="text-center h-9 text-base font-semibold"

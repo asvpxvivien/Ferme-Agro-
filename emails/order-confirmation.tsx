@@ -93,25 +93,40 @@ export const OrderConfirmationEmail = ({
         {/* Products */}
         <Section style={section}>
           <Heading style={h2}>🛒 VOS PRODUITS</Heading>
-          {items.map((item, index) => {
-            const itemPrice = item.purchaseType === "gros" ? item.price * 0.85 : item.price
-            const itemTotal = itemPrice * item.quantity
+          <div style={productsContainer}>
+            {items.map((item, index) => {
+              const itemPrice = item.purchaseType === "gros" ? item.price * 0.85 : item.price
+              const itemTotal = itemPrice * item.quantity
 
-            return (
-              <div key={index} style={productItem}>
-                <Text style={productName}>
-                  <strong>{item.name}</strong> × {item.quantity}
-                </Text>
-                <Text style={productDetails}>
-                  {itemPrice.toLocaleString("fr-FR")} FCFA / {item.unit}
-                  {item.purchaseType === "gros" && " ✨ En gros (-15%)"}
-                </Text>
-                <Text style={productTotal}>
-                  {itemTotal.toLocaleString("fr-FR")} FCFA
-                </Text>
-              </div>
-            )
-          })}
+              return (
+                <div key={index} style={productItem}>
+                  <div style={productHeader}>
+                    <Text style={productName}>
+                      <strong>{item.name}</strong>
+                    </Text>
+                    {item.purchaseType === "gros" && (
+                      <span style={grossBadge}>EN GROS -15%</span>
+                    )}
+                  </div>
+
+                  <div style={productPriceRow}>
+                    <Text style={productDetails}>
+                      {itemPrice.toLocaleString("fr-FR", { minimumFractionDigits: 0 })} FCFA / {item.unit}
+                    </Text>
+                    <Text style={productQuantity}>
+                      × {item.quantity}
+                    </Text>
+                  </div>
+
+                  <div style={productTotalRow}>
+                    <Text style={productTotal}>
+                      TOTAL: <strong>{itemTotal.toLocaleString("fr-FR", { minimumFractionDigits: 0 })} FCFA</strong>
+                    </Text>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
         </Section>
 
         <Hr style={hr} />
@@ -119,19 +134,21 @@ export const OrderConfirmationEmail = ({
         {/* Total */}
         <Section style={section}>
           <div style={summaryBox}>
-            <Text style={summaryRow}>
-              <span>Sous-total:</span>
-              <span style={summaryValue}>{subtotal.toLocaleString("fr-FR")} FCFA</span>
-            </Text>
-            <Text style={summaryRow}>
-              <span>Livraison:</span>
-              <span style={summaryValue}>{deliveryFee === 0 ? "GRATUIT" : `${deliveryFee.toLocaleString("fr-FR")} FCFA`}</span>
-            </Text>
-            <Hr style={summaryHr} />
-            <Text style={totalRow}>
-              <span>TOTAL:</span>
-              <span style={totalValue}>{total.toLocaleString("fr-FR")} FCFA</span>
-            </Text>
+            <div style={summaryRow}>
+              <Text style={summaryLabel}>Sous-total:</Text>
+              <Text style={summaryValue}>{subtotal.toLocaleString("fr-FR", { minimumFractionDigits: 0 })} FCFA</Text>
+            </div>
+            <div style={summaryRow}>
+              <Text style={summaryLabel}>Livraison:</Text>
+              <Text style={summaryValue}>
+                {deliveryFee === 0 ? "GRATUIT" : `${deliveryFee.toLocaleString("fr-FR", { minimumFractionDigits: 0 })} FCFA`}
+              </Text>
+            </div>
+            <Hr style={summaryDivider} />
+            <div style={summaryRow}>
+              <Text style={totalLabel}>TOTAL À PAYER:</Text>
+              <Text style={totalValueFinal}>{total.toLocaleString("fr-FR", { minimumFractionDigits: 0 })} FCFA</Text>
+            </div>
           </div>
         </Section>
 
@@ -157,7 +174,7 @@ export const OrderConfirmationEmail = ({
           </Text>
           <Text style={signature}>
             L'équipe Ferme AgroEcologique ASSIKO<br />
-            Calavi, Bénin 🇧🇯
+            Calavi, Bénin
           </Text>
         </Section>
       </Container>
@@ -255,70 +272,120 @@ const infoDetail = {
   margin: "2px 0",
 }
 
+const productsContainer = {
+  marginTop: "12px",
+}
+
 const productItem = {
-  backgroundColor: "#f9fafb",
-  padding: "12px",
-  marginBottom: "8px",
-  borderRadius: "6px",
+  backgroundColor: "#ffffff",
+  padding: "20px",
+  marginBottom: "16px",
+  borderRadius: "12px",
+  border: "2px solid #e5e7eb",
+  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.05)",
+}
+
+const productHeader = {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
+  marginBottom: "12px",
 }
 
 const productName = {
-  fontSize: "15px",
-  margin: "0 0 4px",
-  color: "#333333",
+  fontSize: "16px",
+  margin: "0",
+  color: "#111827",
+}
+
+const grossBadge = {
+  backgroundColor: "#fbbf24",
+  color: "#78350f",
+  fontSize: "11px",
+  fontWeight: "700",
+  padding: "4px 10px",
+  borderRadius: "12px",
+  letterSpacing: "0.5px",
+}
+
+const productPriceRow = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginBottom: "12px",
+  paddingBottom: "12px",
+  borderBottom: "1px solid #f3f4f6",
 }
 
 const productDetails = {
-  fontSize: "13px",
+  fontSize: "14px",
   margin: "0",
-  color: "#666666",
+  color: "#6b7280",
+}
+
+const productQuantity = {
+  fontSize: "15px",
+  margin: "0",
+  color: "#374151",
+  fontWeight: "600",
+}
+
+const productTotalRow = {
+  marginTop: "8px",
 }
 
 const productTotal = {
-  fontSize: "15px",
+  fontSize: "16px",
   margin: "0",
   color: "#16a34a",
-  fontWeight: "600",
+  fontWeight: "700",
+  textAlign: "right" as const,
 }
 
 const summaryBox = {
   backgroundColor: "#f9fafb",
-  padding: "16px",
-  borderRadius: "8px",
-  border: "2px solid #e5e7eb",
+  padding: "24px",
+  borderRadius: "12px",
+  border: "2px solid #16a34a",
 }
 
 const summaryRow = {
   display: "flex",
   justifyContent: "space-between",
-  fontSize: "14px",
-  color: "#333333",
-  margin: "4px 0",
+  alignItems: "center",
+  marginBottom: "12px",
+}
+
+const summaryLabel = {
+  fontSize: "15px",
+  margin: "0",
+  color: "#4b5563",
 }
 
 const summaryValue = {
+  fontSize: "15px",
+  margin: "0",
+  color: "#111827",
   fontWeight: "600",
 }
 
-const summaryHr = {
+const summaryDivider = {
   borderColor: "#d1d5db",
-  margin: "12px 0",
+  margin: "16px 0",
 }
 
-const totalRow = {
-  display: "flex",
-  justifyContent: "space-between",
+const totalLabel = {
   fontSize: "18px",
+  margin: "0",
+  color: "#111827",
+  fontWeight: "bold",
+}
+
+const totalValueFinal = {
+  fontSize: "22px",
+  margin: "0",
   color: "#16a34a",
   fontWeight: "bold",
-  margin: "8px 0 0",
-}
-
-const totalValue = {
-  fontSize: "20px",
 }
 
 const contactItem = {

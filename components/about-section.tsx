@@ -115,7 +115,7 @@ export function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-center mt-8 md:mt-0">
               Agriculture Naturelle
               <br />
               <span className="text-primary">& Locale</span>
