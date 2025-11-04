@@ -30,17 +30,17 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Téléphone",
-      href: "tel:+229XXXXXXXX",
+      href: "tel:+22997446230",
     },
     {
       icon: MessageCircle,
       title: "WhatsApp",
-      href: "https://wa.me/229XXXXXXXX",
+      href: "https://wa.me/22997446230",
     },
     {
       icon: Mail,
       title: "Email",
-      href: "mailto:contact@fermeassiko.bj",
+      href: "mailto:fermeassiko@gmail.com",
     },
   ]
 
@@ -84,10 +84,24 @@ export default function ContactPage() {
 
     setIsSubmitting(true)
 
-    // Simuler l'envoi
-    setTimeout(() => {
+    try {
+      // Envoyer le message à l'API
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Erreur lors de l'envoi du message")
+      }
+
+      // Success
       setIsSuccess(true)
-      setIsSubmitting(false)
       setFormData({
         name: "",
         email: "",
@@ -101,7 +115,12 @@ export default function ContactPage() {
       setTimeout(() => {
         setIsSuccess(false)
       }, 5000)
-    }, 1500)
+    } catch (error) {
+      console.error("Erreur lors de l'envoi du message:", error)
+      alert("Une erreur est survenue lors de l'envoi de votre message. Veuillez réessayer.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (

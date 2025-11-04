@@ -77,7 +77,7 @@ export function CheckoutStep1() {
           return (
             <div
               key={itemKey}
-              className="flex gap-4 p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
+              className="flex gap-4 p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow relative"
             >
               {/* Product Image */}
               <div className="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
@@ -90,31 +90,35 @@ export function CheckoutStep1() {
               </div>
 
               {/* Product Info */}
-              <div className="flex-1">
-                <div className="flex justify-between items-start mb-2">
-                  <div>
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-col gap-2">
+                  <div className="flex-1">
                     <h3 className="font-semibold text-gray-900">{item.name}</h3>
-                    <div className="flex items-center gap-2 mt-1">
+                    <div className="flex flex-col gap-1 mt-1">
                       <span className="text-sm text-muted-foreground">
                         {getItemPrice(item).toLocaleString('fr-FR')} FCFA / {item.unit}
                       </span>
                       {item.purchaseType === "gros" && (
-                        <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">
+                        <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold w-fit">
                           En gros (-15%)
                         </span>
                       )}
+                      {/* Bouton supprimer sur mobile - sous le prix */}
+                      <div className="sm:hidden mt-1">
+                        <button
+                          onClick={() => removeItem(item.id, item.purchaseType || "detail")}
+                          className="text-red-500 hover:text-red-700 transition-colors flex items-center gap-1 text-sm"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                          <span>Supprimer</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
-                  <button
-                    onClick={() => removeItem(item.id, item.purchaseType || "detail")}
-                    className="text-red-500 hover:text-red-700 transition-colors"
-                  >
-                    <Trash2 className="w-5 h-5" />
-                  </button>
                 </div>
 
                 {/* Quantity Controls */}
-                <div className="flex items-center justify-between mt-3">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between mt-3 gap-3">
                   <div className="flex items-center gap-2">
                     <Button
                       variant="outline"
@@ -159,12 +163,20 @@ export function CheckoutStep1() {
                       <Plus className="h-4 w-4" />
                     </Button>
                   </div>
-                  <div className="text-right">
+                  <div className="text-left sm:text-right">
                     <div className="font-bold text-lg text-primary">
                       {getItemTotal(item).toLocaleString('fr-FR')} FCFA
                     </div>
                   </div>
                 </div>
+
+                {/* Bouton supprimer sur desktop - en haut à droite */}
+                <button
+                  onClick={() => removeItem(item.id, item.purchaseType || "detail")}
+                  className="hidden sm:block absolute top-4 right-4 text-red-500 hover:text-red-700 transition-colors"
+                >
+                  <Trash2 className="w-5 h-5" />
+                </button>
               </div>
             </div>
           )

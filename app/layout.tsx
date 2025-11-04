@@ -30,13 +30,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="fr" className="scroll-smooth light" suppressHydrationWarning>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
+          forcedTheme="light"
         >
           <Suspense fallback={null}>
             <CartProvider>

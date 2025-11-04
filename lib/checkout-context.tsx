@@ -8,6 +8,7 @@ export type DeliveryMethod = "farm" | "home"
 export interface CustomerInfo {
   name: string
   phone: string
+  email?: string
   address: string
   city?: string
   postalCode?: string
@@ -47,6 +48,7 @@ export function CheckoutProvider({ children }: { children: ReactNode }) {
   const [customerInfo, setCustomerInfo] = useState<CustomerInfo>({
     name: "",
     phone: "",
+    email: "",
     address: "",
     city: "",
     postalCode: "",

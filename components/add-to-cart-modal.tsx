@@ -73,14 +73,15 @@ export function AddToCartModal({ isOpen, onClose, onConfirm, product }: AddToCar
 
           {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-md mx-4"
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 100 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="fixed left-0 right-0 bottom-0 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:bottom-auto z-50 w-full md:max-w-md mx-0 md:mx-4 max-h-[90vh] md:max-h-none overflow-y-auto"
           >
-            <div className="bg-card rounded-2xl shadow-2xl overflow-hidden border border-border">
+            <div className="bg-card rounded-t-3xl md:rounded-2xl shadow-2xl overflow-hidden border-t border-border md:border">
               {/* Header */}
-              <div className="relative h-40 bg-secondary/20">
+              <div className="relative h-32 md:h-40 bg-secondary/20">
                 <Image src={product.image || "/placeholder.svg"} alt={product.name} fill className="object-cover" />
                 <button
                   onClick={handleClose}

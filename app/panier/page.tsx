@@ -11,7 +11,7 @@ import Link from "next/link"
 
 export default function PanierPage() {
   const { cart, updateQuantity, removeFromCart, clearCart } = useCart()
-  
+
   const getTotalPrice = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0)
   }
@@ -26,7 +26,7 @@ export default function PanierPage() {
       <Header />
       <main className="flex-1 pt-20 pb-8">
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
+          <h1 className="text-3xl md:text-4xl text-center font-bold text-foreground mb-8">
             Votre <span className="text-primary">Panier</span>
           </h1>
 
@@ -52,9 +52,9 @@ export default function PanierPage() {
                       <h2 className="text-xl font-bold text-foreground">
                         Articles ({cart.reduce((total, item) => total + item.quantity, 0)})
                       </h2>
-                      <Button 
-                        variant="outline" 
-                        size="sm" 
+                      <Button
+                        variant="outline"
+                        size="sm"
                         onClick={clearCart}
                         className="text-destructive hover:text-destructive hover:bg-destructive/10"
                       >
@@ -63,7 +63,7 @@ export default function PanierPage() {
                       </Button>
                     </div>
                   </div>
-                  
+
                   <div className="divide-y divide-border">
                     {cart.map((item) => (
                       <div key={item.id} className="p-4 flex flex-col sm:flex-row gap-4">
@@ -74,25 +74,40 @@ export default function PanierPage() {
                             className="object-cover w-full h-full"
                           />
                         </div>
-                        
+
                         <div className="flex-1">
                           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
-                            <div>
+                            <div className="flex-1">
                               <h3 className="font-bold text-foreground mb-1">{item.name}</h3>
                               <p className="text-sm text-muted-foreground mb-2">{item.category}</p>
-                              <p className="text-primary font-bold">{item.price.toLocaleString('fr-FR')} FCFA</p>
+                              <div className="flex flex-col gap-2">
+                                <p className="text-primary font-bold">{item.price.toLocaleString('fr-FR')} FCFA / unité</p>
+                                {/* Corbeille sur mobile - sous le prix */}
+                                <div className="sm:hidden">
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={() => removeFromCart(item.id)}
+                                    className="text-muted-foreground hover:text-destructive p-0 h-auto"
+                                  >
+                                    <X className="w-4 h-4 mr-1" />
+                                    <span className="text-xs">Supprimer</span>
+                                  </Button>
+                                </div>
+                              </div>
                             </div>
-                            
-                            <div className="flex flex-col sm:items-end gap-4">
+
+                            <div className="flex flex-row sm:flex-col items-center sm:items-end gap-4">
+                              {/* Corbeille sur desktop - en haut à droite */}
                               <Button
                                 variant="ghost"
                                 size="sm"
                                 onClick={() => removeFromCart(item.id)}
-                                className="text-muted-foreground hover:text-destructive p-0 h-auto"
+                                className="hidden sm:block text-muted-foreground hover:text-destructive p-0 h-auto"
                               >
                                 <X className="w-4 h-4" />
                               </Button>
-                              
+
                               <div className="flex items-center gap-3">
                                 <Button
                                   variant="outline"
@@ -102,9 +117,9 @@ export default function PanierPage() {
                                 >
                                   <Minus className="w-4 h-4" />
                                 </Button>
-                                
+
                                 <span className="font-medium w-8 text-center">{item.quantity}</span>
-                                
+
                                 <Button
                                   variant="outline"
                                   size="icon"
@@ -116,7 +131,7 @@ export default function PanierPage() {
                               </div>
                             </div>
                           </div>
-                          
+
                           <div className="mt-4 pt-4 border-t border-border">
                             <p className="font-bold text-foreground">
                               Total: {(item.price * item.quantity).toLocaleString('fr-FR')} FCFA
@@ -128,7 +143,7 @@ export default function PanierPage() {
                   </div>
                 </div>
               </div>
-              
+
               <div>
                 <div className="bg-background rounded-xl border border-border shadow-sm p-6 lg:sticky lg:top-24 lg:self-start mb-8">
                   <h2 className="text-xl font-bold text-foreground mb-6">Récapitulatif</h2>

@@ -39,6 +39,11 @@ export function CheckoutStep2() {
     if (!customerInfo.phone.trim()) {
       newErrors.phone = "Le téléphone est requis"
     }
+    if (!customerInfo.email?.trim()) {
+      newErrors.email = "L'email est requis"
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerInfo.email)) {
+      newErrors.email = "Email invalide"
+    }
 
     if (deliveryMethod === "farm") {
       // Pour retrait à la ferme, pas besoin d'adresse détaillée
@@ -172,6 +177,21 @@ export function CheckoutStep2() {
             className={errors.phone ? "border-red-500" : ""}
           />
           {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+        </div>
+
+        {/* Email */}
+        <div>
+          <Label htmlFor="email">Email *</Label>
+          <Input
+            id="email"
+            type="email"
+            value={customerInfo.email || ""}
+            onChange={(e) => handleInputChange("email", e.target.value)}
+            placeholder="votre.email@exemple.com"
+            className={errors.email ? "border-red-500" : ""}
+          />
+          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+          <p className="text-xs text-muted-foreground mt-1">Nécessaire pour le suivi de votre commande</p>
         </div>
 
         {/* Address - Only for home delivery */}

@@ -90,32 +90,101 @@ export function Header() {
             </div>
           </div>
 
-          {/* Menu Mobile */}
-          <AnimatePresence>
-            {isMobileMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                className="md:hidden border-t border-amber-200/30 overflow-hidden"
-              >
-                <nav className="px-4 py-3 flex flex-col gap-1">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-sm text-gray-700 hover:text-green-600 hover:bg-amber-100/50 transition-all font-medium py-2.5 px-3 rounded-lg"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </nav>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
       </div>
+
+      {/* Menu Mobile Plein Écran */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+            />
+
+            {/* Menu Content */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="fixed top-4 right-4 bottom-auto w-[280px] bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 shadow-2xl z-50 md:hidden rounded-2xl"
+            >
+              <div className="p-6">
+                {/* Close Button */}
+                <button
+                  type="button"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  aria-label="Fermer le menu"
+                  title="Fermer"
+                  className="absolute top-4 right-4 p-2 rounded-full bg-white/80 hover:bg-white transition-colors"
+                >
+                  <X className="w-5 h-5 text-gray-700" aria-hidden="true" />
+                </button>
+
+                {/* Logo */}
+                <div className="flex items-center gap-2 mb-8 mt-2">
+                  <div className="bg-gradient-to-br from-primary to-green-600 rounded-lg p-2 shadow-sm">
+                    <Leaf className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="text-lg font-bold">
+                    <span className="text-gray-800">ASS</span>
+                    <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">IKO</span>
+                  </span>
+                </div>
+
+                {/* Navigation Links */}
+                <nav className="flex flex-col gap-2">
+                  {navLinks.map((link, index) => (
+                    <motion.div
+                      key={link.href}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                    >
+                      <Link
+                        href={link.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block text-gray-700 hover:text-green-600 hover:bg-white/60 hover:scale-105 hover:shadow-sm transition-all duration-200 py-3 px-4 rounded-xl"
+                      >
+                        {link.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </nav>
+
+                {/* Panier Link */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="mt-6 pt-6 border-t border-amber-200/50"
+                >
+                  <Link
+                    href="/panier"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex items-center justify-between bg-gradient-to-r from-green-600 to-emerald-500 text-white py-3 px-4 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200"
+                  >
+                    <div className="flex items-center gap-2">
+                      <ShoppingCart className="w-5 h-5" />
+                      <span>Mon Panier</span>
+                    </div>
+                    {getTotalItems() > 0 && (
+                      <span className="bg-white text-green-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+                        {getTotalItems()}
+                      </span>
+                    )}
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

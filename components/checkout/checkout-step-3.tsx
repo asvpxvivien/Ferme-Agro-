@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation"
 import { useCheckout } from "@/lib/checkout-context"
 import { useCart } from "@/lib/cart-context"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, CheckCircle2, Store, Home, User, Phone, MapPin, Edit2 } from "lucide-react"
+import { ArrowLeft, CheckCircle2, Store, Home, User, Phone, Mail, MapPin, Edit2 } from "lucide-react"
 import type { CartItem } from "@/lib/cart-context"
 
 export function CheckoutStep3() {
@@ -41,19 +41,44 @@ export function CheckoutStep3() {
   const handleConfirmOrder = async () => {
     setIsSubmitting(true)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      // Envoyer la commande à l'API
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          customerInfo,
+          deliveryMethod,
+          items: checkoutItems,
+          subtotal: getSubtotal(),
+          deliveryFee: getDeliveryFee(),
+          total: getTotalWithDelivery(),
+        }),
+      })
 
-    // Clear cart and show confirmation
-    clearCart()
-    setOrderConfirmed(true)
-    setIsSubmitting(false)
+      const data = await response.json()
 
-    // Redirect to home after 3 seconds
-    setTimeout(() => {
-      resetCheckout()
-      router.push("/")
-    }, 3000)
+      if (!response.ok) {
+        throw new Error(data.error || "Erreur lors de l'envoi de la commande")
+      }
+
+      // Success - Clear cart and show confirmation
+      clearCart()
+      setOrderConfirmed(true)
+
+      // Redirect to home after 3 seconds
+      setTimeout(() => {
+        resetCheckout()
+        router.push("/")
+      }, 3000)
+    } catch (error) {
+      console.error("Erreur lors de la confirmation de la commande:", error)
+      alert("Une erreur est survenue lors de l'envoi de votre commande. Veuillez réessayer.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (orderConfirmed) {
@@ -135,6 +160,12 @@ export function CheckoutStep3() {
                 <Phone className="w-5 h-5 text-gray-400" />
                 <span className="text-gray-900">{customerInfo.phone}</span>
               </div>
+              {customerInfo.email && (
+                <div className="flex items-center gap-3">
+                  <Mail className="w-5 h-5 text-gray-400" />
+                  <span className="text-gray-900">{customerInfo.email}</span>
+                </div>
+              )}
               {deliveryMethod === "home" && (
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-gray-400 mt-0.5" />

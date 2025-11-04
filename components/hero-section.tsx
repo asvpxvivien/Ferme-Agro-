@@ -56,7 +56,7 @@ export function HeroSection() {
       </div>
 
       {/* Contenu */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center">
+      <div className="w-full max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 z-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -68,14 +68,14 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+            className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight px-2"
             style={{
               textShadow: "0 0 30px rgba(0,0,0,0.9), 0 4px 15px rgba(0,0,0,0.8), 0 2px 6px rgba(0,0,0,0.6)"
             }}
           >
             Bienvenue à la <span className="text-primary">Ferme ASSIKO</span>
-            <br />
-            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-secondary">Agriculture Écologique & Naturelle</span>
+            <br className="hidden sm:block" />
+            <span className="block sm:inline text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-secondary mt-2 sm:mt-0">Agriculture Écologique & Naturelle</span>
           </motion.h1>
 
           {/* Description */}
@@ -92,7 +92,7 @@ export function HeroSection() {
                 damping: 10
               }
             }}
-            className="text-base sm:text-lg md:text-xl text-white mb-10 leading-relaxed max-w-3xl mx-auto"
+            className="text-lg sm:text-lg md:text-xl text-white mb-6 md:mb-10 leading-relaxed max-w-3xl mx-auto px-4"
             style={{
               textShadow: "0 0 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.6)"
             }}
