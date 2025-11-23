@@ -1,3 +1,5 @@
+# Asssiko-farm - Modern Family farm
+
 A modern e-commerce website for a family farm, built with Next.js 15, React 19, and TypeScript.
 
 ## Overview
@@ -6,7 +8,7 @@ This project is a complete website for a family farm selling local products. It 
 
 ## Technologies Used
 
-- **Framework**: [Next.js 15.2.4]
+- **Framework**: Next.js 15.2.4
 - **Frontend**: React 19
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS with tailwindcss-animate and tw-animate-css
@@ -14,7 +16,7 @@ This project is a complete website for a family farm selling local products. It 
 - **State Management**: React Contexts
 - **Emails**: Resend
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 family-farm/
