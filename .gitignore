@@ -28,4 +28,6 @@ next-env.d.ts
 
 GUIDE_DEPLOIEMENT_COMPLET.md
 .claude
+.env
 .env.local
+.env.* 
