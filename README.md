@@ -1,6 +1,6 @@
 # Asssiko-farm - Modern Family farm
 
-A modern e-commerce website for a family farm, built with Next.js 15, React 19, and TypeScript.
+A modern e-commerce website for a family farm.
 
 ## Overview
 
