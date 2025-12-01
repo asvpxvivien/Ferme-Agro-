@@ -6,6 +6,10 @@ A modern e-commerce website for a family farm, built with Next.js 15, React 19, 
 
 This project is a complete website for a family farm selling local products. It includes all the necessary features for a smooth online shopping experience.
 
+<p align = "center">
+<img src="assets/images/ferme-agro.png" width="300">
+</p>
+
 ## Technologies Used
 
 - **Framework**: Next.js 15.2.4
